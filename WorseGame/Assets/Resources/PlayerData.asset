@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca6a2e1ff5414f49b0ab1eb5ae204a1, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  health: 3
+  color: {r: 0, g: 0.3102684, b: 1, a: 1}
+  ropeColor: {r: 0, g: 0.3102684, b: 1, a: 1}
+  isBig: 0
+  isBulletUnlocked: 0
+  hasLaserRope: 0
+  ropeDampingRatio: 1
+  ropeGrapSpeed: 0.6
+  killsToSpawnBullet: 0
+  bulletCount: 0
