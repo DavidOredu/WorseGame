@@ -66,6 +66,14 @@ public class LevelGenerator : Singleton<LevelGenerator>
     {
         if(!(ScoreSystem.GameScore.score >= GameManager.instance.GetPercentageOfExperienceToNextLevel(box.GetComponent<Box>().boxData.percentageToSpawn))) { return; }
         box.SetActive(true);
+        var boxScript = box.GetComponent<Box>();
+        if(boxScript.boxType == Box.BoxType.Kamikaze)
+        {
+            var kamikaze = box.GetComponent<KamikazeEnemy>();
+            kamikaze.currentKamikazeState = KamikazeEnemy.EnemyState.Idle;
+            kamikaze.trail1.enabled = false;
+            kamikaze.trail2.enabled = false;
+        }
         Vector3 dir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
         float dist;
 

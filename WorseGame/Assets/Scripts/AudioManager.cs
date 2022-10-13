@@ -19,6 +19,8 @@ public class AudioManager : Singleton<AudioManager>, IPointerEnterHandler, IPoin
 
     public List<MMFeedbacks> feedbackIconSounds;
     public List<MMFeedbacks> feedbackUISounds;
+	
+	private List<Sound> musicList;
     // Start is called before the first frame update
     public override void Awake()
     {
@@ -49,8 +51,13 @@ public class AudioManager : Singleton<AudioManager>, IPointerEnterHandler, IPoin
             if(sound.soundType == SoundType.Music)
                 obj.AddComponent<MMAudioSourcePitchShaker>().AlwaysResetTargetValuesAfterShake = true;
         }
-       
-       }
+		
+        foreach (var sound in sounds)
+        {
+            if (sound.soundType == SoundType.Music)
+                musicList.Add(sound);
+        }
+    }
     public void SetFeedbackSounds(bool firstTime)
     {
         foreach (var sound in feedbackUISounds)
@@ -115,12 +122,6 @@ public class AudioManager : Singleton<AudioManager>, IPointerEnterHandler, IPoin
     // Update is called once per frame
     public void PlayRandomMusic(bool delayed = false, float delayTime = .1f)
     {
-        List<Sound> musicList = new List<Sound>();
-        foreach (var sound in sounds)
-        {
-            if (sound.soundType == SoundType.Music)
-                musicList.Add(sound);
-        }
         var randomSound = musicList[UnityEngine.Random.Range(0, musicList.Count)];
         currentMusic = randomSound;
         if (delayed)

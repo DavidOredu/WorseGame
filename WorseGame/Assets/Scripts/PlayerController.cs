@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
   
     public LineRenderer line;
     public LayerMask whatToHook;
+    public float hookSearchRadius = 60f;
     public float grabSpeed;
     public float minimumDistance;
 
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
         Collider2D[] colliders;
 
-        colliders = Physics2D.OverlapCircleAll(clickedPos, 60f, LayerMask.GetMask("Box"));
+        colliders = Physics2D.OverlapCircleAll(clickedPos, hookSearchRadius, LayerMask.GetMask("Box"));
         if(colliders.Length == 0)
         {
             hookHit = Physics2D.Raycast(transform.position, Vector2.zero, 0f, LayerMask.GetMask("Box"));
@@ -208,21 +209,17 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    private void LateUpdate()
-    {
-        
-    }
     private void FixedUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
             HoldingStart();
         }
-        if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0))
         {
             Holding();
         }
-        if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0))
         {
             HoldingEnd();
         }

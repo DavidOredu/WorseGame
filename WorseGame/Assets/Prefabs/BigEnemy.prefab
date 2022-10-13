@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9116989280756316183
 Transform:
@@ -170,7 +170,7 @@ GameObject:
   m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6698790106984960551
 Transform:
@@ -277,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxType: 2
   boxData: {fileID: 11400000, guid: b99058dee4bf438458f971c77231d363, type: 2}
+  canDamage: 1
   destructionEffect: {fileID: 8928233112347745738, guid: 72e90c93538a8fc47be1a560c7f23dfd,
     type: 3}
   destructionFeedbacks: {fileID: -622119858465077686}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, IDestructible
 {
     private GameObject player;
+    public Rigidbody2D playerRB;
     private SpriteRenderer spriteRenderer;
     private PlayerData playerData;
     private TrailRenderer trail;
@@ -14,6 +15,7 @@ public class Bullet : MonoBehaviour, IDestructible
     public Timer lifetimeTimer;
     public float maxLifetime;
     private Vector3 direction;
+    private float directionRange = .5f;
     public float distanceToHit;
     public GameObject destructionEffect;
     // Start is called before the first frame update
@@ -26,6 +28,7 @@ public class Bullet : MonoBehaviour, IDestructible
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerData = Resources.Load<PlayerData>("PlayerData");
         player = GameObject.FindGameObjectWithTag("Player");
+        playerRB = player.GetComponent<Rigidbody2D>();
         trail = GetComponent<TrailRenderer>();
 
         spriteRenderer.color = playerData.color;
@@ -35,11 +38,16 @@ public class Bullet : MonoBehaviour, IDestructible
     }
     public void CreateNewDirection()
     {
-        direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+        var direction = playerRB.velocity.normalized;
+        var newDir = new Vector3(Random.Range(direction.x - directionRange, direction.x + directionRange), Random.Range(direction.y - directionRange, direction.y + directionRange), 0);
+        this.direction = newDir;
+      //  direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+        trail.enabled = true;
     }
-    // Update is called once per frame
-    private void Update()
+    void FixedUpdate()
     {
+        transform.Translate(direction * speed * Time.deltaTime);
+
         if (!lifetimeTimer.isTimeUp)
         {
             lifetimeTimer.UpdateTimer();
@@ -49,10 +57,6 @@ public class Bullet : MonoBehaviour, IDestructible
         {
             Collide(true);
         }
-    }
-    void FixedUpdate()
-    {
-        transform.Translate(direction * speed * Time.deltaTime);
     }
     void Collide(bool forcedCollision)
     {
@@ -68,11 +72,13 @@ public class Bullet : MonoBehaviour, IDestructible
             InstantiateDestructParticle();
             lifetimeTimer.StopTimer();
             gameObject.SetActive(false);
+            Destroy(gameObject, 3f);
         }
         if (forcedCollision)
         {
             InstantiateDestructParticle();
             gameObject.SetActive(false);
+            Destroy(gameObject, 3f);
         }
     }
 
@@ -81,5 +87,6 @@ public class Bullet : MonoBehaviour, IDestructible
         var destructionGO = Instantiate(destructionEffect, transform.position, Quaternion.identity);
         var main = destructionGO.GetComponent<ParticleSystem>().main;
         main.startColor = GetComponent<SpriteRenderer>().color;
+        trail.enabled = false;
     }
 }

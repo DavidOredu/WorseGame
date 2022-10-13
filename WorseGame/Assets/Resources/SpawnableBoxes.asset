@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df28d05eb9df04d4ea62abfd54481264, type: 3}
   m_Name: SpawnableBoxes
   m_EditorClassIdentifier: 
-  poolTags: 
+  poolTags: 000000000100000002000000030000000700000006000000

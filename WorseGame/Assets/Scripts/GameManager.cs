@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : SingletonDontDestroy<GameManager>
 {
+    public int targetFPS = 60;
     public GameObject playerPrefab;
     public Transform playerSpawnPoint;
     public GameObject levelGeneratorPrefab;
@@ -37,6 +38,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
     public override void Awake()
     {
         base.Awake();
+        Application.targetFrameRate = targetFPS;
         SetGraphics();
         OnGameStart += SetScoreMultiplier;
         OnGameStart += ResetScore;

@@ -14,6 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolsToSpawn:
   - tag: 6
-    prefab: {fileID: 4893380724985257009, guid: 708da5da9c07edf42b000033bb7ed8d2,
+    prefab: {fileID: 6698790106984960549, guid: 0d70dc5870609c54786474cf54ffe262,
       type: 3}
-    size: 100
+    size: 12
+  - tag: 0
+    prefab: {fileID: 8300415771582527257, guid: ac0bf7a476322c54babf0fd1511bee1f,
+      type: 3}
+    size: 50
+  - tag: 1
+    prefab: {fileID: 130391419578796484, guid: f2c3922c1b4a79449881721fe8525ab0, type: 3}
+    size: 20
+  - tag: 2
+    prefab: {fileID: 6698790106984960549, guid: 85e5067074363a04f9d3641d6a6424dc,
+      type: 3}
+    size: 7
+  - tag: 3
+    prefab: {fileID: 7434511174607168937, guid: 39a2b6a763802b841bb6cb7f239bd222,
+      type: 3}
+    size: 12
+  - tag: 7
+    prefab: {fileID: 6698790106984960549, guid: cc96f59cbe6a1434980f60e934035cc7,
+      type: 3}
+    size: 12

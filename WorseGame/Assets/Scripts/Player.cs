@@ -9,10 +9,13 @@ public class Player : MonoBehaviour, IDestructible, IFeedbacks
     public int health;
     public Color color;
     public bool isBig;
+    private bool isInvulnerable;
     
     private Stack<Image> healthIconsStack = new Stack<Image>();
 
     public SpriteRenderer spriteRenderer;
+    public TrailRenderer trail1;
+    public TrailRenderer trail2;
     public LineRenderer ropeRenderer;
     private PlayerData playerData;
 
@@ -33,6 +36,10 @@ public class Player : MonoBehaviour, IDestructible, IFeedbacks
 
         isBig = playerData.isBig;
         spriteRenderer.color = playerData.color;
+        trail1.startColor = playerData.color;
+        trail2.startColor = playerData.color;
+        trail1.endColor = new Color(playerData.color.r, playerData.color.g, playerData.color.b, 0);
+        trail2.endColor = new Color(playerData.color.r, playerData.color.g, playerData.color.b, 0);
         ropeRenderer.startColor = playerData.ropeColor;
         ropeRenderer.endColor = playerData.ropeColor;
     }
@@ -61,8 +68,9 @@ public class Player : MonoBehaviour, IDestructible, IFeedbacks
             bulletSoundFeedback.PlayFeedbacks();
             for (int i = 0; i < playerData.bulletCount; i++)
             {
-                var bullet = ObjectPooler.instance.SpawnFromPool(ObjectPooler.PoolTag.Bullet, transform.position, Quaternion.identity);
+                var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 var bulletSc = bullet.GetComponent<Bullet>();
+                if(bulletSc.playerRB != null)
                 bulletSc.CreateNewDirection();
                 bulletSc.lifetimeTimer.ResetTimer();
             }
@@ -104,6 +112,7 @@ public class Player : MonoBehaviour, IDestructible, IFeedbacks
     }
     public void Damage(bool totalDamage)
     {
+        if (isInvulnerable) { return; }
         // Player Damage Feedback
         PlayDamageFeedback();
 

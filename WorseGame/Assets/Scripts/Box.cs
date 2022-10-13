@@ -10,6 +10,7 @@ public class Box : MonoBehaviour, IDestructible
 
     private int score;
     private int currency;
+    public bool canDamage;
 
     public GameObject destructionEffect;
 
@@ -17,9 +18,14 @@ public class Box : MonoBehaviour, IDestructible
     public MMFeedbackFloatingText valueText;
     public MMFeedbackFloatingText currencyText;
 
-    SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
+
+    [Header("ENEMY VARIABLES")]
+    public float playerSearchRadius;
+    public float playerMaxRadius;
+    public LayerMask whatToAttack;
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         SetBoxScores();
@@ -32,7 +38,7 @@ public class Box : MonoBehaviour, IDestructible
 
         if (other.CompareTag("Player"))
         {
-            if (boxType == BoxType.BigEnemy || boxType == BoxType.Enemy)
+            if (canDamage)
                 Damage(other.gameObject, true);
             else
             {
@@ -42,7 +48,7 @@ public class Box : MonoBehaviour, IDestructible
         }
     }
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         
     }
@@ -103,6 +109,26 @@ public class Box : MonoBehaviour, IDestructible
             case BoxType.MoneyDeluxe:
                 GameManager.instance.AddCurrency(currency, true);
                 break;
+            case BoxType.Shooter:
+                if (damagePlayer)
+                {
+                    if (!playerSc.isBig)
+                        playerSc.Damage(true);
+                    else
+                        playerSc.Damage(false);
+                    GameManager.instance.AddCurrency(currency, false);
+                }
+                break;
+            case BoxType.Kamikaze:
+                if (damagePlayer)
+                {
+                    if (!playerSc.isBig)
+                        playerSc.Damage(true);
+                    else
+                        playerSc.Damage(false);
+                    GameManager.instance.AddCurrency(currency, false);
+                }
+                break;
             default:
                 GameManager.instance.AddCurrency(currency, false);
                 break;
@@ -113,7 +139,7 @@ public class Box : MonoBehaviour, IDestructible
     {
         var destructionGO = Instantiate(destructionEffect, transform.position, Quaternion.identity);
         var main = destructionGO.GetComponent<ParticleSystem>().main;
-        main.startColor = GetComponent<SpriteRenderer>().color;
+        main.startColor = spriteRenderer.color;
     }
 
     public enum BoxType
@@ -124,5 +150,13 @@ public class Box : MonoBehaviour, IDestructible
         Special,
         Deluxe,
         MoneyDeluxe,
+        Shooter,
+        Kamikaze,
+    }
+    public enum EnemyState
+    {
+        Idle,
+        Alert,
+        Attack,
     }
 }

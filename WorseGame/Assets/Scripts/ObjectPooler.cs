@@ -160,6 +160,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         Special,
         Deluxe,
         MoneyDeluxe,
-        Bullet,
+        Shooter,
+        Kamikaze,
     }
 }
