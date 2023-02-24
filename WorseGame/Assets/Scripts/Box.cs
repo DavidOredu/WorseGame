@@ -20,22 +20,32 @@ public class Box : MonoBehaviour, IDestructible
 
     protected SpriteRenderer spriteRenderer;
 
+    private PowerupBehaviour powerupBehaviour;
+    private AIController aIController;
+
     [Header("ENEMY VARIABLES")]
     public float playerSearchRadius;
     public float playerMaxRadius;
     public LayerMask whatToAttack;
+
+    [Header("PROBABILITY VARIABLES")]
+    public ProbabilityData probabilityData;
+    public Probability<bool> boxSpawnProbability;
+    public bool hasInitProbability { get; private set; }
+
+    
     // Start is called before the first frame update
     public virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        powerupBehaviour = GetComponent<PowerupBehaviour>();
+        aIController = GetComponent<AIController>();
         SetBoxScores();
 
         currencyText.Channel = 1;
-        
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.CompareTag("Player"))
         {
             if (canDamage)
@@ -47,10 +57,17 @@ public class Box : MonoBehaviour, IDestructible
             }
         }
     }
-    // Update is called once per frame
-    public virtual void Update()
+    public void InitProbability()
     {
-        
+        if (hasInitProbability) { return; }
+
+        aIController = GetComponent<AIController>();
+        if(aIController != null)
+            boxSpawnProbability = new Probability<bool>(aIController.difficultyData.spawnProbabilityCurves[0], GameManager.instance.boolList);
+        else
+            boxSpawnProbability = new Probability<bool>(probabilityData.probabilityCurve, GameManager.instance.boolList);
+
+        hasInitProbability = true;
     }
     public void Damage(GameObject player, bool damagePlayer)
     {
@@ -129,6 +146,12 @@ public class Box : MonoBehaviour, IDestructible
                     GameManager.instance.AddCurrency(currency, false);
                 }
                 break;
+            case BoxType.Health:
+                powerupBehaviour.ActivatePowerup();
+                break;
+            case BoxType.Shield:
+                powerupBehaviour.ActivatePowerup();
+                break;
             default:
                 GameManager.instance.AddCurrency(currency, false);
                 break;
@@ -152,6 +175,9 @@ public class Box : MonoBehaviour, IDestructible
         MoneyDeluxe,
         Shooter,
         Kamikaze,
+        Health,
+        Shield,
+        ViralHit,
     }
     public enum EnemyState
     {

@@ -4,7 +4,6 @@ using UnityEngine;
 public class ShooterEnemy : Box
 {
     private Timer shotTimer;
-    private Timer betweenShotTimer;
     public float shotTime;
     public float btwShotsTime;
     public int shotCount;
@@ -23,16 +22,8 @@ public class ShooterEnemy : Box
         shotTimer.SetTimer();
         alertTimer = new Timer(alertTime);
         alertTimer.SetTimer();
-        betweenShotTimer = new Timer(btwShotsTime);
-        betweenShotTimer.SetTimer();
 
         spriteRenderer = transform.Find("BoxGFX").GetComponent<SpriteRenderer>();
-    }
-    public override void Update()
-    {
-        base.Update();
-
-
     }
     private void FixedUpdate()
     {
@@ -82,7 +73,7 @@ public class ShooterEnemy : Box
         {
             target = null;
             currentShooterState = EnemyState.Idle;
-            alertTimer.ResetTimer();
+            alertTimer.ResetTimer(alertTime);
         }
     }
     void TrackPlayer()
@@ -94,10 +85,10 @@ public class ShooterEnemy : Box
     }
     void ShootPlayer()
     {
-        if (shotTimer.isTimeUp)
+        if (shotTimer.IsTimeUp)
         {
             StartCoroutine(Shoot());
-            shotTimer.ResetTimer();
+            shotTimer.ResetTimer(shotTime);
         }
         else
         {
@@ -106,7 +97,7 @@ public class ShooterEnemy : Box
     }
     void RunAlertTimer()
     {
-        if (alertTimer.isTimeUp)
+        if (alertTimer.IsTimeUp)
         {
             currentShooterState = EnemyState.Attack;
         }
@@ -123,7 +114,7 @@ public class ShooterEnemy : Box
         {
             target = null;
             currentShooterState = EnemyState.Idle;
-            alertTimer.ResetTimer();
+            alertTimer.ResetTimer(alertTime);
         }
     }
 }

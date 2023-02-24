@@ -15,4 +15,7 @@ public class LevelData : ScriptableObject
 
     [Header("EXPERIENCE TO NEXT LEVEL")]
     public AnimationCurve experienceToNextLevel;
+
+    [Header("EXPERIENCE LEVEL UP SPEED")]
+    public AnimationCurve xpBarSpeed;
 }

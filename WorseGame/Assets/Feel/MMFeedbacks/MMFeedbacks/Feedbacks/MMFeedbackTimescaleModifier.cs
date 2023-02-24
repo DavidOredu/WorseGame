@@ -42,11 +42,11 @@ namespace MoreMountains.Feedbacks
         public float TimeScaleDuration = 1f;
         /// whether or not we should lerp the timescale
         [Tooltip("whether or not we should lerp the timescale")]
-        [MMFEnumCondition("Mode", (int)Modes.Shake)]
+     //   [MMFEnumCondition("Mode", (int)Modes.Shake)]
         public bool TimeScaleLerp = false;
         /// the speed at which to lerp the timescale
         [Tooltip("the speed at which to lerp the timescale")]
-        [MMFEnumCondition("Mode", (int)Modes.Shake)]
+     //   [MMFEnumCondition("Mode", (int)Modes.Shake)]
         public float TimeScaleLerpSpeed = 1f;
         /// whether to reset the timescale on Stop or not
         [Tooltip("whether to reset the timescale on Stop or not")]
@@ -71,10 +71,10 @@ namespace MoreMountains.Feedbacks
                         MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, TimeScale, FeedbackDuration, TimeScaleLerp, TimeScaleLerpSpeed, false);
                         break;
                     case Modes.Change:
-                        MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, TimeScale, 0f, false, 0f, true);
+                        MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, TimeScale, 0f, TimeScaleLerp, TimeScaleLerpSpeed, true);
                         break;
                     case Modes.Reset:
-                        MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Reset, TimeScale, 0f, false, 0f, true);
+                        MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Reset, TimeScale, 0f, TimeScaleLerp, TimeScaleLerpSpeed, true);
                         break;
                 }                
             }
@@ -89,7 +89,7 @@ namespace MoreMountains.Feedbacks
         {
             if (Active && ResetTimescaleOnStop)
             {
-                MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Reset, TimeScale, 0f, false, 0f, true);
+                MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Reset, TimeScale, 0f, TimeScaleLerp, TimeScaleLerpSpeed, true);
             }
         }
     }

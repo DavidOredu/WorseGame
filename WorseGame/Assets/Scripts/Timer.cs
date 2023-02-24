@@ -3,7 +3,7 @@
 public class Timer
 {
     public bool timerStarted = false;
-    public bool isTimeUp { get; private set; } = false;
+    public bool IsTimeUp { get; private set; } = false;
     bool pause = false;
 
     float _time;
@@ -33,7 +33,7 @@ public class Timer
                 _time -= Time.deltaTime;
             }
         }
-        isTimeUp = true;
+        IsTimeUp = true;
         _time = 0f;
     }
 
@@ -52,7 +52,7 @@ public class Timer
         }
         else
         {
-            isTimeUp = true;
+            IsTimeUp = true;
             _time = 0f;
         }
     }
@@ -69,7 +69,7 @@ public class Timer
     public void ResetTimer()
     {
         _time = time;
-        isTimeUp = false;
+        IsTimeUp = false;
         timerStarted = true;
 
     }
@@ -83,13 +83,10 @@ public class Timer
     /// <param name="newTime">The new countdown time.</param>
     public void ResetTimer(float newTime)
     {
-        if (timerStarted)
-        {
-            time = newTime;
-            _time = time;
-            isTimeUp = false;
-            timerStarted = false;
-        }
+        time = newTime;
+        _time = time;
+        IsTimeUp = false;
+        timerStarted = true;
     }
     /// <summary>
     /// Checks if the timer is still running.
@@ -97,7 +94,7 @@ public class Timer
     /// <returns>True if the timer is running and false if not.</returns>
     public bool IsTimerRunning()
     {
-        if (isTimeUp || pause)
+        if (IsTimeUp || pause)
         {
             return false;
         }

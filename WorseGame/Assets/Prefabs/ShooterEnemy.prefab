@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 1877397457125106372}
   - component: {fileID: -7777333122698847489}
   - component: {fileID: 6552055983088316468}
+  - component: {fileID: -1789233467603720836}
   m_Layer: 12
   m_Name: ShooterEnemy
   m_TagString: Box
@@ -515,6 +516,7 @@ MonoBehaviour:
   boxType: 6
   boxData: {fileID: 11400000, guid: 921d8d6ce912f5143b471b7bf4ca2b10, type: 2}
   canDamage: 1
+  isEnemyType: 1
   destructionEffect: {fileID: 8928233112347745738, guid: 72e90c93538a8fc47be1a560c7f23dfd,
     type: 3}
   destructionFeedbacks: {fileID: -622119858465077686}
@@ -525,6 +527,7 @@ MonoBehaviour:
   whatToAttack:
     serializedVersion: 2
     m_Bits: 256
+  probabilityData: {fileID: 11400000, guid: 8cc75071315310b4881c106ab1a8416f, type: 2}
   shotTime: 3
   btwShotsTime: 0.5
   shotCount: 2
@@ -565,3 +568,17 @@ PolygonCollider2D:
       - {x: -3.3154573, y: -3.3074737}
       - {x: 3.3154588, y: -3.3533165}
       - {x: 3.3119824, y: 3.3346708}
+--- !u!114 &-1789233467603720836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6698790106984960549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b663c61be3ede334aa0dfe7f9000015a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyData: {fileID: 11400000, guid: 3e9ac464f7cfcf24cbb5227095e09c1b, type: 2}
+  enemyType: 2

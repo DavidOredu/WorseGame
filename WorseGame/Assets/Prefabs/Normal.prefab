@@ -277,11 +277,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxType: 0
   boxData: {fileID: 11400000, guid: 6651ab5531f4a0e4eb149125a65afee8, type: 2}
+  canDamage: 0
   destructionEffect: {fileID: 8928233112347745738, guid: 72e90c93538a8fc47be1a560c7f23dfd,
     type: 3}
   destructionFeedbacks: {fileID: 8260319638522920309}
   valueText: {fileID: -1575042078333214818}
   currencyText: {fileID: 762406141107652422}
+  playerSearchRadius: 0
+  playerMaxRadius: 0
+  whatToAttack:
+    serializedVersion: 2
+    m_Bits: 0
+  probabilityData: {fileID: 11400000, guid: c2aec9dcaf9b38d4ca73a2ae0b2fca1c, type: 2}
 --- !u!114 &8260319638522920309
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlueRope
   m_EditorClassIdentifier: 
   customizationType: 1
-  color: {r: 0, g: 0.3102684, b: 1, a: 1}
+  color: {r: 0.3160377, g: 0.5268482, b: 1, a: 1}
   level: 1
   price: 0
   isUnlocked: 1

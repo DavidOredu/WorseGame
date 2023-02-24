@@ -7,14 +7,19 @@ using UnityEngine.UI;
 public class GameManager : SingletonDontDestroy<GameManager>
 {
     public int targetFPS = 60;
-    public GameObject playerPrefab;
+
+    private bool inGame = false;
+
     public Transform playerSpawnPoint;
+    public GameObject playerPrefab;
     public GameObject levelGeneratorPrefab;
     public GameObject objectPoolerPrefab;
+    public GameObject powerupManagerPrefab;
 
-    private GameObject player;
+    private GameObject playerObj;
     private GameObject levelGenerator;
     private GameObject objectPooler;
+    private GameObject powerupManager;
 
     public LevelWindow levelWindow;
     public Cinemachine.CinemachineVirtualCamera cmVcam;
@@ -34,24 +39,37 @@ public class GameManager : SingletonDontDestroy<GameManager>
     public SettingsData settingsData;
 
     public MMFeedbacks currencyAwardFeedback;
+
+    public PowerupController powerupController;
+    public PowerupActions powerupActions;
+
+    public Player player;
+    public PlayerData playerData { get; private set; }
+
+    public float xpToNextLevelNormalized;
+    public List<bool> boolList { get; private set; } = new List<bool> { true, false };
     // Start is called before the first frame update
     public override void Awake()
     {
         base.Awake();
-        Application.targetFrameRate = targetFPS;
+        playerData = Resources.Load<PlayerData>("PlayerData");
+
+     //   Application.targetFrameRate = targetFPS;
         SetGraphics();
+        OnGameStart += SetInGame;
         OnGameStart += SetScoreMultiplier;
         OnGameStart += ResetScore;
         OnGameStart += InstantiateInGameObjects;
         OnGameStart += RemoveGameOverUI;
         OnGameStart += CameraFollowPlayer;
+        OnGameStart += ActivatePauseButton;
 
+        OnGameEnd += DeactivatePauseButton;
         OnGameEnd += SetScoreToLevel;
         OnGameEnd += DisplayGameOverUI;
         OnGameEnd += SetUIStats;
         OnGameEnd += DestroyInGameObjects;
-
-        
+        OnGameEnd += SetInGame;
     }
     public void SetGraphics()
     {
@@ -66,6 +84,10 @@ public class GameManager : SingletonDontDestroy<GameManager>
         currencyData = Resources.Load<CurrencyData>("CurrencyData");
         LevelingManager.instance.levelSystemAnimated.OnLevelChanged += LevelSystemAnimated_OnLevelChanged;
     }
+    void SetInGame()
+    {
+        inGame = !inGame;
+    }
     void SetScoreMultiplier()
     {
         ScoreSystem.GameScore.maxMultiplier = scoreData.maxScoreMultiplier;
@@ -76,9 +98,12 @@ public class GameManager : SingletonDontDestroy<GameManager>
     }
     public void InstantiateInGameObjects()
     {
-        player = Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity);
+        playerObj = Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity);
         levelGenerator = Instantiate(levelGeneratorPrefab, playerSpawnPoint.position, Quaternion.identity);
         objectPooler = Instantiate(objectPoolerPrefab, playerSpawnPoint.position, Quaternion.identity);
+        powerupManager = Instantiate(powerupManagerPrefab, playerSpawnPoint.position, Quaternion.identity);
+
+        player = playerObj.GetComponentInChildren<Player>();
     }
     public void DestroyInGameObjects()
     {
@@ -89,9 +114,18 @@ public class GameManager : SingletonDontDestroy<GameManager>
                 obj.GetComponent<IDestructible>().InstantiateDestructParticle();
             Destroy(obj);
         }
-        Destroy(player);
+        Destroy(playerObj);
         Destroy(levelGenerator);
         Destroy(objectPooler);
+        Destroy(powerupManager);
+    }
+    public void ActivatePauseButton()
+    {
+        UIManager.instance.SetPauseButton(true);
+    }
+    public void DeactivatePauseButton()
+    {
+        UIManager.instance.SetPauseButton(false);
     }
     private void LevelSystemAnimated_OnLevelChanged(object sender, EventArgs e)
     {
@@ -103,7 +137,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
     {
         if (ScoreSystem.GameScore.currentScoreMultiplier > 1)
         {
-            if (!scoreComboTimer.isTimeUp)
+            if (!scoreComboTimer.IsTimeUp)
             {
                 scoreComboTimer.UpdateTimer();
             }
@@ -111,6 +145,16 @@ public class GameManager : SingletonDontDestroy<GameManager>
             {
                 ScoreSystem.GameScore.currentScoreMultiplier = 1;
             }
+        }
+        if((powerupController == null || powerupActions == null) && inGame)
+        {
+            powerupManager = GameObject.FindGameObjectWithTag("PowerupManager");
+            powerupController = powerupManager.GetComponent<PowerupController>();
+            powerupActions = powerupManager.GetComponent<PowerupActions>();
+        }
+        if (inGame)
+        {
+            SetXPToNextLevelNormalized();
         }
     }
     public void AddCurrency(int amount, bool playSound)
@@ -122,12 +166,21 @@ public class GameManager : SingletonDontDestroy<GameManager>
     public void AddScore(int score)
     {
         scoreComboTimer.ResetTimer();
-        ScoreSystem.GameScore.score += score * ScoreSystem.GameScore.currentScoreMultiplier;
+
+        if (!player.superMultiplier)
+            ScoreSystem.GameScore.score += score * ScoreSystem.GameScore.currentScoreMultiplier;
+        else
+            ScoreSystem.GameScore.score += score * ScoreSystem.GameScore.currentScoreMultiplier * scoreData.superMultiplierMultiplier;
+
         ScoreSystem.GameScore.kills++;
         if (ScoreSystem.GameScore.currentScoreMultiplier < ScoreSystem.GameScore.maxMultiplier)
         {
             ScoreSystem.GameScore.currentScoreMultiplier++;
         }
+    }
+    public void SetXPToNextLevelNormalized()
+    {
+        xpToNextLevelNormalized = Mathf.Abs(ScoreSystem.GameScore.score / LevelingManager.instance.levelSystem.GetExperienceToNextLevelFloat(LevelingManager.instance.levelSystem.GetLevelNumber()));
     }
     public void ResetScore()
     {
@@ -135,7 +188,18 @@ public class GameManager : SingletonDontDestroy<GameManager>
     }
     public void SetScoreToLevel()
     {
-        LevelingManager.instance.levelSystem.AddExperience(ScoreSystem.GameScore.score);
+        AddXP(ScoreSystem.GameScore.score);
+    }
+    public void AddXP(int xp)
+    {
+        LevelingManager.instance.levelSystem.AddExperience(xp);
+    }
+    public void AwardAdsReward()
+    {
+        AddCurrency(Mathf.CeilToInt(.25f * LevelingManager.instance.levelSystem.GetExperienceToNextLevel(LevelingManager.instance.levelSystem.GetLevelNumber())), true);
+        AddXP(LevelingManager.instance.levelSystem.GetExperienceToNextLevel(LevelingManager.instance.levelSystem.GetLevelNumber()));
+        ShopManager.instance.SetCurrencyToRewardAfterAdText();
+        // TODO: Reward currency
     }
     public void SetUIStats()
     {
@@ -179,8 +243,12 @@ public class GameManager : SingletonDontDestroy<GameManager>
     {
         OnGameEnd?.Invoke();
     }
-    public int GetPercentageOfExperienceToNextLevel(int percentage)
+    public void KillPlayer()
     {
-        return (percentage * LevelingManager.instance.levelSystem.GetExperienceToNextLevel(LevelingManager.instance.levelSystem.GetLevelNumber()) / 100);
+        player.Damage(true);
+    }
+    public float GetPercentageOfExperienceToNextLevel(float percentage)
+    {
+        return (percentage) * LevelingManager.instance.levelSystem.GetExperienceToNextLevelFloat(LevelingManager.instance.levelSystem.GetLevelNumber());
     }
 }

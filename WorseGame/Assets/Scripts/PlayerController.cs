@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
     public float orthoMinSize;
     public float orthoMaxSize;
-    private List<GameObject> hitsDebug = new List<GameObject>();
 
     private Vector2 desiredPos;
     public Vector2 offsetPoint;
@@ -133,6 +132,7 @@ public class PlayerController : MonoBehaviour
         ropeVel = rb.velocity;
         offsetVel = maxVel;
         offsetMultiplier = maxOffsetMultiplier;
+        rb.AddForce((hookHit.point - (Vector2)transform.position).normalized * Vector3.Distance(transform.position, hookHit.point), ForceMode2D.Force);
     }
     public void PlayHitSound()
     {
@@ -144,8 +144,6 @@ public class PlayerController : MonoBehaviour
     private void Holding()
     {
         if (!isHolding) { return; }
-
-       
 
         if(playerData.hasLaserRope)
             LaserRope();
@@ -165,10 +163,6 @@ public class PlayerController : MonoBehaviour
 
         line.SetPosition(0, transform.position);
         line.SetPosition(1, transform.position);
-
-        hitsDebug.Clear();
-
-        
     }
     void CheckStopGrappling()
     {
@@ -187,16 +181,9 @@ public class PlayerController : MonoBehaviour
 
         var lineDist = endPoint - (Vector2)startPoint;
 
-        var hits = Physics2D.RaycastAll(startPoint, lineDist.normalized, lineDist.magnitude, LayerMask.GetMask("Box"));
+        var hits = Physics2D.RaycastAll(startPoint, lineDist.normalized, lineDist.magnitude, LayerMask.GetMask("Box", "Shooter", "Kamikaze"));
         Debug.DrawRay(startPoint, lineDist, Color.green);
 
-
-        for (int i = 0; i < hits.Length; i++)
-        {
-            if (!hitsDebug.Contains(hits[i].collider.gameObject))
-            hitsDebug.Add(hits[i].collider.gameObject);
-        }
-       
         foreach (var hit in hits)
         {
             if(hit.collider == hookHit.collider) { continue; }

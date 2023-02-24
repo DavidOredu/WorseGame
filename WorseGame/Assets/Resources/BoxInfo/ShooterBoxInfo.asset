@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShooterBoxInfo
   m_EditorClassIdentifier: 
   poolInfo:
-    tag: 7
+    tag: 6
     prefab: {fileID: 6698790106984960549, guid: 0d70dc5870609c54786474cf54ffe262,
       type: 3}
     size: 20

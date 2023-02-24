@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Yellow
   m_EditorClassIdentifier: 
   customizationType: 0
-  color: {r: 1, g: 1, b: 0, a: 1}
+  color: {r: 1, g: 1, b: 0.5613208, a: 1}
   level: 0
-  price: 0
+  price: 70000000
   isUnlocked: 0
   isPicked: 0
   priceAtLevel:
@@ -24,17 +24,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 70000000
-      outSlope: 70000000
+      inSlope: 20000000
+      outSlope: 20000000
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 70000000
-      inSlope: 70000000
-      outSlope: 70000000
+      value: 20000000
+      inSlope: 20000000
+      outSlope: 20000000
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

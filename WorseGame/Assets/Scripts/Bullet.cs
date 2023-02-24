@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, IDestructible
 {
     private GameObject player;
+    private Player playerScript;
     public Rigidbody2D playerRB;
     private SpriteRenderer spriteRenderer;
     private PlayerData playerData;
@@ -18,6 +19,9 @@ public class Bullet : MonoBehaviour, IDestructible
     private float directionRange = .5f;
     public float distanceToHit;
     public GameObject destructionEffect;
+
+    private Box box;
+    private Vector3 newDir;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,7 @@ public class Bullet : MonoBehaviour, IDestructible
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerData = Resources.Load<PlayerData>("PlayerData");
         player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponentInChildren<Player>();
         playerRB = player.GetComponent<Rigidbody2D>();
         trail = GetComponent<TrailRenderer>();
 
@@ -38,9 +43,9 @@ public class Bullet : MonoBehaviour, IDestructible
     }
     public void CreateNewDirection()
     {
-        var direction = playerRB.velocity.normalized;
-        var newDir = new Vector3(Random.Range(direction.x - directionRange, direction.x + directionRange), Random.Range(direction.y - directionRange, direction.y + directionRange), 0);
-        this.direction = newDir;
+        direction = playerRB.velocity.normalized;
+        newDir = new Vector3(Random.Range(direction.x - directionRange, direction.x + directionRange), Random.Range(direction.y - directionRange, direction.y + directionRange), 0);
+        direction = newDir;
       //  direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
         trail.enabled = true;
     }
@@ -48,7 +53,7 @@ public class Bullet : MonoBehaviour, IDestructible
     {
         transform.Translate(direction * speed * Time.deltaTime);
 
-        if (!lifetimeTimer.isTimeUp)
+        if (!lifetimeTimer.IsTimeUp)
         {
             lifetimeTimer.UpdateTimer();
             Collide(false);
@@ -60,13 +65,16 @@ public class Bullet : MonoBehaviour, IDestructible
     }
     void Collide(bool forcedCollision)
     {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, distanceToHit, LayerMask.GetMask("Box", "Ground", "LavaPit"));
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, distanceToHit, LayerMask.GetMask("Box", "Ground", "Shooter", "Kamikaze", "LavaPit"));
         if (hit)
         {
             if (hit.CompareTag("Box"))
             {
-                var box = hit.GetComponent<Box>();
+                box = hit.GetComponent<Box>();
                 box.Damage(player, false);
+
+                if(playerScript.viralHit)
+                    playerScript.ShootBullet(playerData.viralHitCount, box.transform.position);
             }
             // play collision feedback
             InstantiateDestructParticle();

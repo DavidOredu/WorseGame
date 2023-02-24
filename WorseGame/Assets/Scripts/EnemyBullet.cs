@@ -27,7 +27,7 @@ public class EnemyBullet : MonoBehaviour, IDestructible
 
         if (isActive)
         {
-            if (!lifetimeTimer.isTimeUp)
+            if (!lifetimeTimer.IsTimeUp)
             {
                 lifetimeTimer.UpdateTimer();
             }

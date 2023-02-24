@@ -15,4 +15,6 @@ public class PlayerData : ScriptableObject
     public float ropeGrapSpeed = .5f;
     public int killsToSpawnBullet = 10;
     public int bulletCount = 6;
+    public int viralHitCount = 1;
+    public float bulletCooldownTime = 3f;
 }

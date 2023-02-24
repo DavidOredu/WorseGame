@@ -23,12 +23,7 @@ public class LavaPit : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponentInChildren<Player>().Damage(true);
+            other.GetComponentInChildren<Player>().Damage(true, true);
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -16,4 +16,4 @@ MonoBehaviour:
   score: 800
   currency: 20
   isUnlocked: 1
-  percentageToSpawn: 60
+  percentageToSpawn: 50

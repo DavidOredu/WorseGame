@@ -9,20 +9,29 @@ public class Player : MonoBehaviour, IDestructible, IFeedbacks
     public int health;
     public Color color;
     public bool isBig;
-    private bool isInvulnerable;
+    public bool isInvulnerable;
+    public bool viralHit;
+    public bool superMultiplier;
     
-    private Stack<Image> healthIconsStack = new Stack<Image>();
+    private List<Image> healthIconsStack = new List<Image>();
 
     public SpriteRenderer spriteRenderer;
-    public TrailRenderer trail1;
-    public TrailRenderer trail2;
+    public List<TrailRenderer> trails;
     public LineRenderer ropeRenderer;
+
+    [SerializeField]
+    private Material shieldMat;
+
     private PlayerData playerData;
 
     public GameObject bulletPrefab;
 
     public int killMeter;
+    private bool canSpawnBullet;
+    private Timer bulletCooldownTimer;
+    private float bulletCooldownTime;
 
+    public GameObject shield;
     public GameObject destructionEffect;
     public MMFeedbacks collisionFeedback;
     public MMFeedbacks damageFeedback;
@@ -36,12 +45,20 @@ public class Player : MonoBehaviour, IDestructible, IFeedbacks
 
         isBig = playerData.isBig;
         spriteRenderer.color = playerData.color;
-        trail1.startColor = playerData.color;
-        trail2.startColor = playerData.color;
-        trail1.endColor = new Color(playerData.color.r, playerData.color.g, playerData.color.b, 0);
-        trail2.endColor = new Color(playerData.color.r, playerData.color.g, playerData.color.b, 0);
+        foreach (var trail in trails)
+        {
+            trail.startColor = playerData.color;
+            trail.endColor = playerData.color;
+        }
         ropeRenderer.startColor = playerData.ropeColor;
         ropeRenderer.endColor = playerData.ropeColor;
+        shield.SetActive(false);
+        shieldMat.SetColor("_Color", playerData.color);
+
+        bulletCooldownTime = playerData.bulletCooldownTime;
+
+        bulletCooldownTimer = new Timer(bulletCooldownTime);
+        bulletCooldownTimer.SetTimer();
     }
     void Start()
     {
@@ -58,26 +75,47 @@ public class Player : MonoBehaviour, IDestructible, IFeedbacks
     {
         if (playerData.isBulletUnlocked)
         {
+            ControlBulletCooldown();
             SpawnBullets();
         }
     }
-    void SpawnBullets()
+    private void SpawnBullets()
     {
         if(killMeter >= playerData.killsToSpawnBullet)
         {
-            bulletSoundFeedback.PlayFeedbacks();
-            for (int i = 0; i < playerData.bulletCount; i++)
+            if (canSpawnBullet)
             {
-                var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                var bulletSc = bullet.GetComponent<Bullet>();
-                if(bulletSc.playerRB != null)
-                bulletSc.CreateNewDirection();
-                bulletSc.lifetimeTimer.ResetTimer();
+                bulletSoundFeedback.PlayFeedbacks();
+                ShootBullet(playerData.bulletCount, transform.position);
+                killMeter = 0;
+                canSpawnBullet = false;
+                bulletCooldownTimer.ResetTimer();
             }
-            killMeter = 0;
         }
     }
-    void InitialzeHealth()
+    public void ShootBullet(int bulletCount, Vector3 position)
+    {
+        for (int i = 0; i < bulletCount; i++)
+        {
+            var bullet = Instantiate(bulletPrefab, position, Quaternion.identity);
+            var bulletSc = bullet.GetComponent<Bullet>();
+            if (bulletSc.playerRB != null)
+                bulletSc.CreateNewDirection();
+            bulletSc.lifetimeTimer.ResetTimer();
+        }
+    }
+    private void ControlBulletCooldown()
+    {
+        if (bulletCooldownTimer.IsTimeUp)
+        {
+            canSpawnBullet = true;
+        }
+        else
+        {
+            bulletCooldownTimer.UpdateTimer();
+        }
+    }
+    private void InitialzeHealth()
     {
         health = playerData.health;
 
@@ -91,45 +129,51 @@ public class Player : MonoBehaviour, IDestructible, IFeedbacks
             GameManager.instance.healthIcons[i].color = playerData.color;
         }
     }
-    void UpdateHealthBar(int healthLost)
+    void UpdateHealthBar(int healthRemaining, bool active, bool totalDamage = false)
     {
-        for (int i = 0; i < healthLost; i++)
-        {
-            var currentImage = healthIconsStack.Peek();
-            // use variable to run feedback logic on health bar
-
-            currentImage.gameObject.SetActive(false);
-            healthIconsStack.Pop();
-        }
+        if(!totalDamage)
+            healthIconsStack[healthRemaining].gameObject.SetActive(active);
+        else
+            for (int i = 0; i < playerData.health; i++)
+                healthIconsStack[i].gameObject.SetActive(false);
     }
     void SetIconsStack()
     {
         foreach (var healthIcon in GameManager.instance.healthIcons)
         {
             if(healthIcon.gameObject.activeSelf)
-                healthIconsStack.Push(healthIcon);
+                healthIconsStack.Add(healthIcon);
         }
     }
-    public void Damage(bool totalDamage)
+    public void IncreaseHealth(int amount)
     {
-        if (isInvulnerable) { return; }
+        if(health == playerData.health) { return; }
+
+        UpdateHealthBar(health, true);
+
+        health += amount;
+    }
+    public void Damage(bool totalDamage, bool lavaPit = false)
+    {
+        if (isInvulnerable && !lavaPit) { return; }
         // Player Damage Feedback
         PlayDamageFeedback();
 
-        var previousHealth = health;
-
         if (totalDamage)
+        {
             health = 0;
+            UpdateHealthBar(health, false, totalDamage);
+        }
         else
             health--;
 
-        var difference = previousHealth - health;
-        UpdateHealthBar(difference);
+        UpdateHealthBar(health, false, totalDamage);
 
         if(health == 0)
         {
             // Player destruction feedback
             InstantiateDestructParticle();
+            UIManager.instance.ClosePopUp();
             GameManager.instance.GameEnd();
             transform.parent.gameObject.SetActive(false);
         }

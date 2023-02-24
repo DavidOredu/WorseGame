@@ -6,7 +6,7 @@ public class LevelingManager : SingletonDontDestroy<LevelingManager>
 {
    // [SerializeField] private LevelWindow levelWindow;
 
-    private LevelData levelData;
+    public LevelData levelData;
     public LevelWindow levelWindow;
 
     public LevelSystem levelSystem { get; private set; }

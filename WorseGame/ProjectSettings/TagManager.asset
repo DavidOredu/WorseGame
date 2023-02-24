@@ -9,6 +9,8 @@ TagManager:
   - CMvcam
   - LavaPit
   - Ground
+  - UICamera
+  - PowerupManager
   layers:
   - Default
   - TransparentFX
@@ -24,7 +26,7 @@ TagManager:
   - LavaPit
   - Shooter
   - Kamikaze
-  - 
+  - Blur
   - 
   - 
   - 

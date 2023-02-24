@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BulletsItem
   m_EditorClassIdentifier: 
   itemName: Bullets
-  price: 33390
+  price: 0
   level: 0
   maxLevel: 10
   isSoldOut: 0

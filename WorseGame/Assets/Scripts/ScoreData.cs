@@ -8,4 +8,5 @@ public class ScoreData : ScriptableObject
     public int highScore = 0;
     public int maxKills;
     public int maxScoreMultiplier = 2;
+    public int superMultiplierMultiplier = 2;
 }

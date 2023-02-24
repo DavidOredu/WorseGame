@@ -4,7 +4,7 @@ using UnityEngine;
 public class LevelSystemAnimated
 {
     public int level;
-    public int amountOfBuyingXP;
+    //public int amountOfBuyingXP;
 
 
     //  private int experienceToNextLevel;
@@ -42,7 +42,7 @@ public class LevelSystemAnimated
                 UpdateAddExperience();
             }
         }
-        Debug.Log(level + " " + levelAttributeExperience);
+     //   Debug.Log(level + " " + levelAttributeExperience);
 
     }
     private void UpdateAddExperience()
@@ -72,28 +72,35 @@ public class LevelSystemAnimated
             level++;
             levelSystem.levelAttribute.experience -= levelSystem.levelAttribute.experienceToNextLevel;
             OnLevelChanged?.Invoke(this, EventArgs.Empty);
-            Debug.Log("has invoked level changed in level system animated");
         }
         else if (levelSystem.IsMaxLevel())
         {
             level = 100;
+            levelSystem.levelAttribute.experience = 0;
             OnLevelChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 
     public void AddExperience()
     {
-        levelAttributeExperience += Mathf.CeilToInt((.5f * experienceToNextLevel) / 100);
+        //    levelAttributeExperience += Mathf.CeilToInt((.5f * experienceToNextLevel) / 100);
+        Debug.Log($"The current experience animated is {Mathf.CeilToInt(Mathf.Lerp(0, experienceToNextLevel, LevelingManager.instance.levelData.xpBarSpeed.Evaluate(GetAttributeNormalized(levelAttributeExperience))))}");
+        levelAttributeExperience += Mathf.CeilToInt(Mathf.Lerp(0, experienceToNextLevel, LevelingManager.instance.levelData.xpBarSpeed.Evaluate(GetAttributeNormalized(levelAttributeExperience))));
 
-        if(levelAttributeExperience >= experienceToNextLevel)
+        if(levelAttributeExperience >= experienceToNextLevel && !levelSystem.IsMaxLevel())
         {
             level++;
             levelAttributeExperience = 0;
             experienceToNextLevel = levelSystem.GetExperienceToNextLevel(level);
             OnLevelChanged?.Invoke(this, EventArgs.Empty);
         }
+        else if(levelSystem.IsMaxLevel())
+        {
+            level = 100;
+            levelAttributeExperience = 0;
+            experienceToNextLevel = 0;
+        }
         OnExperienceChanged?.Invoke(this, EventArgs.Empty);
-        Debug.Log("has invoked experience changed in level system animated");
     }
     public void SetLevelSystem(LevelSystem levelSystem)
     {

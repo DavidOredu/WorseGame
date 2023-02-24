@@ -23,23 +23,16 @@ public class ScoreUI : MonoBehaviour, IFeedbacks
     {
        
     }
-    void Awake()
-    {
-        GameManager.OnGameStart += SetMultiplierTextColor;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
     private void SetMultiplierTextColor()
     {
-        currentScoreMultiplierText.color = Resources.Load<PlayerData>("PlayerData").color;
+        currentScoreMultiplierText.color = GameManager.instance.playerData.color;
     }
     // Update is called once per frame
     void Update()
     {
         scoreValueText.text = ScoreSystem.GameScore.score.ToString("N0");
         currentScoreMultiplierText.gameObject.SetActive(ScoreSystem.GameScore.currentScoreMultiplier > 1);
+        SetMultiplierTextColor();
         currentScoreMultiplierText.text = "X" + ScoreSystem.GameScore.currentScoreMultiplier.ToString();
     }
 }

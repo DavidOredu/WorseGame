@@ -8,9 +8,6 @@ using MoreMountains.Feedbacks;
 
 public class LevelWindow : MonoBehaviour
 {
-    private LevelData levelData;
-
-
     [SerializeField] private TextMeshProUGUI experienceToExperienceToNextLevelText = null;
     [SerializeField] private TextMeshProUGUI levelText = null;
     [SerializeField] private TextMeshProUGUI currencyText = null;
@@ -30,10 +27,6 @@ public class LevelWindow : MonoBehaviour
     public Button retryButton;
     public Button shopButton;
 
-    private void Awake()
-    {
-        levelData = Resources.Load<LevelData>("LevelData");
-    }
     private void Start()
     {
         SetStatsTexts();
@@ -52,6 +45,8 @@ public class LevelWindow : MonoBehaviour
     }
     public void LevelUp()
     {
+        if (levelSystem.IsMaxLevel()) { return; }
+
         levelSystem.LevelUp();
         levelSystemAnimated.LevelUp();
     }

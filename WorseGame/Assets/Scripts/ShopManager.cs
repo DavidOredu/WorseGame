@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MoreMountains.Feedbacks;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,24 +20,39 @@ public class ShopManager : SingletonDontDestroy<ShopManager>
     public List<List<Image>> customizationItemIndicators = new List<List<Image>>();
 
     PlayerData playerData;
+    ScoreData scoreData;
 
     public List<BoxData> boxData = new List<BoxData>();
     public List<PoolInfo> boxInfo = new List<PoolInfo>();
+    public List<PowerupData> powerupData = new List<PowerupData>();
+
     [Space]
     public CurrencyData currencyData;
     public PoolList spawnPoolList;
     public SpawnableBoxes spawnableBoxes;
+
+    [Space]
+    public List<MMFeedbacks> adsTextGlowFeedbacks = new List<MMFeedbacks>();
+    public List<TextMeshProUGUI> currencyToRewardAfterAd = new List<TextMeshProUGUI>();
 
     // Start is called before the first frame update
     public override void Awake()
     {
         base.Awake();
 
+        for (int i = 0; i < adsTextGlowFeedbacks.Count; i++)
+        {
+            adsTextGlowFeedbacks[i].Initialization();
+        }
+
         playerData = Resources.Load<PlayerData>("PlayerData");
+        scoreData = Resources.Load<ScoreData>("ScoreData");
+
         GameManager.OnGameEnd += UpdateShopUI;
     }
     void Start()
     {
+        SetCurrencyToRewardAfterAdText();
         SetShopItemPrices();
         CheckAllItemAndCusLevels();
         SetPriceTexts();
@@ -59,6 +75,14 @@ public class ShopManager : SingletonDontDestroy<ShopManager>
         GameSaveManager.OnResetGame += SetCusDataActivity;
         GameSaveManager.OnResetGame += SetPlayerDataCustomization;
         GameSaveManager.OnResetGame += SetSpawnPoolList;
+        GameSaveManager.OnResetGame += SetCurrencyToRewardAfterAdText;
+    }
+    public void SetCurrencyToRewardAfterAdText()
+    {
+        for (int i = 0; i < currencyToRewardAfterAd.Count; i++)
+        {
+            currencyToRewardAfterAd[i].text = "+$" + (.25f * LevelingManager.instance.levelSystem.GetExperienceToNextLevel(LevelingManager.instance.levelSystem.GetLevelNumber())).ToString("N0");
+        }
     }
     private void CheckAllItemAndCusLevels()
     {
@@ -330,7 +354,7 @@ public class ShopManager : SingletonDontDestroy<ShopManager>
                 playerData.health++;
                 break;
             case 1:
-                Resources.Load<ScoreData>("ScoreData").maxScoreMultiplier += 2;
+                scoreData.maxScoreMultiplier += 2;
                 break;
             case 2:
                 playerData.isBulletUnlocked = true;
@@ -363,6 +387,22 @@ public class ShopManager : SingletonDontDestroy<ShopManager>
             case 7:
                 playerData.ropeGrapSpeed += 0.02f;
                 playerData.ropeDampingRatio -= 0.075f;
+                break;
+            case 8:
+                boxData[6].isUnlocked = true;
+                SetSpawnPoolList();
+                break;
+            case 9:
+                if (!boxData[7].isUnlocked)
+                {
+                    boxData[7].isUnlocked = true;
+                    powerupData[1].duration = 5f;
+                    SetSpawnPoolList();
+                }
+                else
+                {
+                    powerupData[1].duration += 1.5f;
+                }
                 break;
         }
     }

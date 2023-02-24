@@ -12,6 +12,8 @@ public class LevelGenerator : Singleton<LevelGenerator>
     public Vector3 areaOffset;
 
     public List<GameObject> boxesSpawned = new List<GameObject>();
+    public List<Box> boxesSpawnedComponents = new List<Box>();
+    public List<AIController> aIControllers = new List<AIController>();
 
     public float playerMaxHeight = 600f;
     public float boxMinDist;
@@ -28,23 +30,37 @@ public class LevelGenerator : Singleton<LevelGenerator>
     // Update is called once per frame
     void Update()
     {
-        foreach (var box in boxesSpawned)
+        for (int i = 0; i < boxesSpawned.Count; i++)
         {
-            var dist = Vector3.Distance(box.transform.position, player.transform.position);
+            // Make sure the probability object has been initialized on this box.
+            boxesSpawnedComponents[i].InitProbability();
+            
+
+            // if the box is let to spawn by the probability generator, then proceed to spawn. Else, return.
+            if (!boxesSpawnedComponents[i].boxSpawnProbability.ProbabilityGenerator()) { continue; }
+
+            var dist = Vector3.Distance(boxesSpawned[i].transform.position, player.transform.position);
             if (dist > boxMaxDist && player.transform.position.y < playerMaxHeight)
             {
-                UpdateBoxPositions(box, true);
+                UpdateBoxPositions(boxesSpawned[i], true);
             }
         }
     }
     void Spawn(Vector3 spawnPoint, Vector3 spawnArea)
     {
         var poolDictionary = ObjectPooler.instance.poolDictionary;
+        AIController aIController;
+
         for (int i = 0; i < poolTags.Count; i++)
         {
             foreach (var obj in poolDictionary[poolTags[i]])
             {
                 boxesSpawned.Add(obj);
+                boxesSpawnedComponents.Add(obj.GetComponent<Box>());
+                aIController = obj.GetComponent<AIController>();
+
+                if (aIController != null)
+                    aIControllers.Add(aIController);
             }
         }
 
@@ -64,13 +80,13 @@ public class LevelGenerator : Singleton<LevelGenerator>
 
     void UpdateBoxPositions(GameObject box, bool isFar = false)
     {
-        if(!(ScoreSystem.GameScore.score >= GameManager.instance.GetPercentageOfExperienceToNextLevel(box.GetComponent<Box>().boxData.percentageToSpawn))) { return; }
+        if(!(ScoreSystem.GameScore.score >= GameManager.instance.GetPercentageOfExperienceToNextLevel(box.GetComponent<Box>().boxData.percentageToSpawn * .01f))) { return; }
         box.SetActive(true);
         var boxScript = box.GetComponent<Box>();
         if(boxScript.boxType == Box.BoxType.Kamikaze)
         {
             var kamikaze = box.GetComponent<KamikazeEnemy>();
-            kamikaze.currentKamikazeState = KamikazeEnemy.EnemyState.Idle;
+            kamikaze.currentKamikazeState = Box.EnemyState.Idle;
             kamikaze.trail1.enabled = false;
             kamikaze.trail2.enabled = false;
         }

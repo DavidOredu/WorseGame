@@ -12,6 +12,8 @@ public class PlayerAttribute
     // the real value of experience
     public int experience;
 
+    public int addedExperience;
+
     // bool to tell if the bar is full
     public bool isFull = false;
 

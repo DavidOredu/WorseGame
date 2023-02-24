@@ -1,0 +1,417 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+// 0x00000001 System.Void MoreMountains.Feedbacks.MMFeedbackTMPCharacterSpacing::FillTargets()
+extern void MMFeedbackTMPCharacterSpacing_FillTargets_mE072DC4E4EA2DF3B950B747B3E305EC9B6379F4E (void);
+// 0x00000002 System.Void MoreMountains.Feedbacks.MMFeedbackTMPCharacterSpacing::.ctor()
+extern void MMFeedbackTMPCharacterSpacing__ctor_mA52D68F9A4C3F6D020A5DF8AAA9519875011948C (void);
+// 0x00000003 System.Single MoreMountains.Feedbacks.MMFeedbackTMPColor::get_FeedbackDuration()
+extern void MMFeedbackTMPColor_get_FeedbackDuration_m0613963A9C1084DFA977736120F1E51191D1F7E7 (void);
+// 0x00000004 System.Void MoreMountains.Feedbacks.MMFeedbackTMPColor::set_FeedbackDuration(System.Single)
+extern void MMFeedbackTMPColor_set_FeedbackDuration_m75D3147C5D569F11943BBE08D523136ADF15E134 (void);
+// 0x00000005 System.Void MoreMountains.Feedbacks.MMFeedbackTMPColor::CustomInitialization(UnityEngine.GameObject)
+extern void MMFeedbackTMPColor_CustomInitialization_m360ABEB16A9E316D168D0890E656F33EC52D248C (void);
+// 0x00000006 System.Void MoreMountains.Feedbacks.MMFeedbackTMPColor::CustomPlayFeedback(UnityEngine.Vector3,System.Single)
+extern void MMFeedbackTMPColor_CustomPlayFeedback_m1AA2979C046BDA4F85CAAA3C35EB13A556BD6722 (void);
+// 0x00000007 System.Collections.IEnumerator MoreMountains.Feedbacks.MMFeedbackTMPColor::ChangeColor()
+extern void MMFeedbackTMPColor_ChangeColor_m27B6803D1D855B1E498B27D8E75B7E76B6450E67 (void);
+// 0x00000008 System.Void MoreMountains.Feedbacks.MMFeedbackTMPColor::CustomStopFeedback(UnityEngine.Vector3,System.Single)
+extern void MMFeedbackTMPColor_CustomStopFeedback_m1B21589F4A9BB37FB3BB0B1173008E67D40968F4 (void);
+// 0x00000009 System.Void MoreMountains.Feedbacks.MMFeedbackTMPColor::SetColor(System.Single)
+extern void MMFeedbackTMPColor_SetColor_m0C9C426BDA730F8844E55DEEA69104F6B51D36C0 (void);
+// 0x0000000A System.Void MoreMountains.Feedbacks.MMFeedbackTMPColor::.ctor()
+extern void MMFeedbackTMPColor__ctor_mEC34D0430A3E3C5EBBEF63C6275C039D1B229042 (void);
+// 0x0000000B System.Void MoreMountains.Feedbacks.MMFeedbackTMPColor/<ChangeColor>d__16::.ctor(System.Int32)
+extern void U3CChangeColorU3Ed__16__ctor_m9AB2D11DEA4E391CCE2F9162A37ABBB1E8115403 (void);
+// 0x0000000C System.Void MoreMountains.Feedbacks.MMFeedbackTMPColor/<ChangeColor>d__16::System.IDisposable.Dispose()
+extern void U3CChangeColorU3Ed__16_System_IDisposable_Dispose_mC94F585AC82FDC822E97485A1A582EADFD564FCA (void);
+// 0x0000000D System.Boolean MoreMountains.Feedbacks.MMFeedbackTMPColor/<ChangeColor>d__16::MoveNext()
+extern void U3CChangeColorU3Ed__16_MoveNext_mC97757225D8EF877016D0D88BDC594FE1217151B (void);
+// 0x0000000E System.Object MoreMountains.Feedbacks.MMFeedbackTMPColor/<ChangeColor>d__16::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CChangeColorU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m5D2F8E25BC677BBD5FD6C85C6F9929B97E7DB6ED (void);
+// 0x0000000F System.Void MoreMountains.Feedbacks.MMFeedbackTMPColor/<ChangeColor>d__16::System.Collections.IEnumerator.Reset()
+extern void U3CChangeColorU3Ed__16_System_Collections_IEnumerator_Reset_m5B438B77819B725858606AAA3BA0EBC855B0735B (void);
+// 0x00000010 System.Object MoreMountains.Feedbacks.MMFeedbackTMPColor/<ChangeColor>d__16::System.Collections.IEnumerator.get_Current()
+extern void U3CChangeColorU3Ed__16_System_Collections_IEnumerator_get_Current_m5DE3166B7FD4B3257271B4B16373CA8DCF4E6CA2 (void);
+// 0x00000011 System.Single MoreMountains.Feedbacks.MMFeedbackTMPDilate::get_FeedbackDuration()
+extern void MMFeedbackTMPDilate_get_FeedbackDuration_mC1785858E44FB65E6FF919E49761FD1CF035EC8B (void);
+// 0x00000012 System.Void MoreMountains.Feedbacks.MMFeedbackTMPDilate::set_FeedbackDuration(System.Single)
+extern void MMFeedbackTMPDilate_set_FeedbackDuration_m05F4F69C54D09AD3EE1959A1FC68F57BE3F3D6D1 (void);
+// 0x00000013 System.Void MoreMountains.Feedbacks.MMFeedbackTMPDilate::CustomInitialization(UnityEngine.GameObject)
+extern void MMFeedbackTMPDilate_CustomInitialization_m314AC78E16E4A6046456F92571FE744A0447B911 (void);
+// 0x00000014 System.Void MoreMountains.Feedbacks.MMFeedbackTMPDilate::CustomPlayFeedback(UnityEngine.Vector3,System.Single)
+extern void MMFeedbackTMPDilate_CustomPlayFeedback_m3F8B71F41D834340DC3BC1298247D4838A53BCF5 (void);
+// 0x00000015 System.Collections.IEnumerator MoreMountains.Feedbacks.MMFeedbackTMPDilate::ApplyValueOverTime()
+extern void MMFeedbackTMPDilate_ApplyValueOverTime_m0D80A61F348A01D79C360D86E4D745EBE5BAA449 (void);
+// 0x00000016 System.Void MoreMountains.Feedbacks.MMFeedbackTMPDilate::SetValue(System.Single)
+extern void MMFeedbackTMPDilate_SetValue_m39497D5B42EA6593D9099DBF4BB833C99C19226B (void);
+// 0x00000017 System.Void MoreMountains.Feedbacks.MMFeedbackTMPDilate::.ctor()
+extern void MMFeedbackTMPDilate__ctor_m059D9300D7B2FE34B007C97C0EFCDBA9F957EC0E (void);
+// 0x00000018 System.Void MoreMountains.Feedbacks.MMFeedbackTMPDilate/<ApplyValueOverTime>d__16::.ctor(System.Int32)
+extern void U3CApplyValueOverTimeU3Ed__16__ctor_m503197A0132D840BD60D67AF74DCF55654D53134 (void);
+// 0x00000019 System.Void MoreMountains.Feedbacks.MMFeedbackTMPDilate/<ApplyValueOverTime>d__16::System.IDisposable.Dispose()
+extern void U3CApplyValueOverTimeU3Ed__16_System_IDisposable_Dispose_m2B5A17EABA54D236732A9A033910AC38BBD3DA5E (void);
+// 0x0000001A System.Boolean MoreMountains.Feedbacks.MMFeedbackTMPDilate/<ApplyValueOverTime>d__16::MoveNext()
+extern void U3CApplyValueOverTimeU3Ed__16_MoveNext_m96EE41E66270AF4ED0DDD20269DBED1ECBABD584 (void);
+// 0x0000001B System.Object MoreMountains.Feedbacks.MMFeedbackTMPDilate/<ApplyValueOverTime>d__16::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CApplyValueOverTimeU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m55376C12972C3889A6FDB94DFD6AC83C215E1E4D (void);
+// 0x0000001C System.Void MoreMountains.Feedbacks.MMFeedbackTMPDilate/<ApplyValueOverTime>d__16::System.Collections.IEnumerator.Reset()
+extern void U3CApplyValueOverTimeU3Ed__16_System_Collections_IEnumerator_Reset_mC222C4BE2055C9468C6C9522287F74A4B6CB712F (void);
+// 0x0000001D System.Object MoreMountains.Feedbacks.MMFeedbackTMPDilate/<ApplyValueOverTime>d__16::System.Collections.IEnumerator.get_Current()
+extern void U3CApplyValueOverTimeU3Ed__16_System_Collections_IEnumerator_get_Current_m0A6A8785C63432DD777DFBCC43D4F8F7205D0741 (void);
+// 0x0000001E System.Void MoreMountains.Feedbacks.MMFeedbackTMPFontSize::FillTargets()
+extern void MMFeedbackTMPFontSize_FillTargets_m59DA9642A0321BDFE669496738CC4AA77BF91D52 (void);
+// 0x0000001F System.Void MoreMountains.Feedbacks.MMFeedbackTMPFontSize::.ctor()
+extern void MMFeedbackTMPFontSize__ctor_m8FC9BF1A70F2061E020F682EFA9C0B5A719E815B (void);
+// 0x00000020 System.Void MoreMountains.Feedbacks.MMFeedbackTMPLineSpacing::FillTargets()
+extern void MMFeedbackTMPLineSpacing_FillTargets_m8ED037A6F85558B2050997712686D62001BD2A86 (void);
+// 0x00000021 System.Void MoreMountains.Feedbacks.MMFeedbackTMPLineSpacing::.ctor()
+extern void MMFeedbackTMPLineSpacing__ctor_m13F8015E5DC976F94763487B5016D0E9FF5DCE06 (void);
+// 0x00000022 System.Single MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor::get_FeedbackDuration()
+extern void MMFeedbackTMPOutlineColor_get_FeedbackDuration_m8049F663B51B872C86E5DAFAC7D060C5C9C9E2BD (void);
+// 0x00000023 System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor::set_FeedbackDuration(System.Single)
+extern void MMFeedbackTMPOutlineColor_set_FeedbackDuration_m35A13C8704F576ED38145C1A680E60A02D713F52 (void);
+// 0x00000024 System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor::CustomInitialization(UnityEngine.GameObject)
+extern void MMFeedbackTMPOutlineColor_CustomInitialization_mD2C240229071AE8339E1F446E57E95BA8861BB40 (void);
+// 0x00000025 System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor::CustomPlayFeedback(UnityEngine.Vector3,System.Single)
+extern void MMFeedbackTMPOutlineColor_CustomPlayFeedback_mA7423D0603C99AF154126F1ECE47D388F94725E7 (void);
+// 0x00000026 System.Collections.IEnumerator MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor::ChangeColor()
+extern void MMFeedbackTMPOutlineColor_ChangeColor_m74AAEB54503CE2A04501AAE8C55A58E4657133FD (void);
+// 0x00000027 System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor::SetColor(System.Single)
+extern void MMFeedbackTMPOutlineColor_SetColor_m87C15DE89B9D2274C9F1DB7DF45F52A010D65E3F (void);
+// 0x00000028 System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor::CustomStopFeedback(UnityEngine.Vector3,System.Single)
+extern void MMFeedbackTMPOutlineColor_CustomStopFeedback_m84CD76557FDD530B77299FAAFF77A6FFE21E0FB6 (void);
+// 0x00000029 System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor::.ctor()
+extern void MMFeedbackTMPOutlineColor__ctor_m5D5EC21DC2A9772B5B083C99B79D49A527FC03FC (void);
+// 0x0000002A System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor/<ChangeColor>d__16::.ctor(System.Int32)
+extern void U3CChangeColorU3Ed__16__ctor_m70A5F02243B037869D168470481F369EB8B2E9AB (void);
+// 0x0000002B System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor/<ChangeColor>d__16::System.IDisposable.Dispose()
+extern void U3CChangeColorU3Ed__16_System_IDisposable_Dispose_mC462E0E24A18B683CFD18C65780D638C14899F50 (void);
+// 0x0000002C System.Boolean MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor/<ChangeColor>d__16::MoveNext()
+extern void U3CChangeColorU3Ed__16_MoveNext_mCDFAD20588302F6A46A3CC993E38EABD5C6F1A92 (void);
+// 0x0000002D System.Object MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor/<ChangeColor>d__16::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CChangeColorU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m62B551B732FADF4CE4298F38E13E2EAD41D9283D (void);
+// 0x0000002E System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor/<ChangeColor>d__16::System.Collections.IEnumerator.Reset()
+extern void U3CChangeColorU3Ed__16_System_Collections_IEnumerator_Reset_m56DB6AE427085DD0C3D8C9369542E99DCCA3C1FD (void);
+// 0x0000002F System.Object MoreMountains.Feedbacks.MMFeedbackTMPOutlineColor/<ChangeColor>d__16::System.Collections.IEnumerator.get_Current()
+extern void U3CChangeColorU3Ed__16_System_Collections_IEnumerator_get_Current_mD0A09BCDF71AB33A4B17ED00E1F267CF3D45FB78 (void);
+// 0x00000030 System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineWidth::FillTargets()
+extern void MMFeedbackTMPOutlineWidth_FillTargets_m8A0FEBE444CD106F769C06B030E3208FA52942DF (void);
+// 0x00000031 System.Void MoreMountains.Feedbacks.MMFeedbackTMPOutlineWidth::.ctor()
+extern void MMFeedbackTMPOutlineWidth__ctor_m5A0991B38522612D822F416E32CF07782CFEA3CA (void);
+// 0x00000032 System.Void MoreMountains.Feedbacks.MMFeedbackTMPParagraphSpacing::FillTargets()
+extern void MMFeedbackTMPParagraphSpacing_FillTargets_m67EF24A073D4BE5DA23685264B0ED2A6DF91A137 (void);
+// 0x00000033 System.Void MoreMountains.Feedbacks.MMFeedbackTMPParagraphSpacing::.ctor()
+extern void MMFeedbackTMPParagraphSpacing__ctor_mBEF9CC8AE773E1680CFEE02DCA2765220C709CEF (void);
+// 0x00000034 System.Single MoreMountains.Feedbacks.MMFeedbackTMPSoftness::get_FeedbackDuration()
+extern void MMFeedbackTMPSoftness_get_FeedbackDuration_m4D8E4E634BC5696A05AE47882C77AE27F88F258F (void);
+// 0x00000035 System.Void MoreMountains.Feedbacks.MMFeedbackTMPSoftness::set_FeedbackDuration(System.Single)
+extern void MMFeedbackTMPSoftness_set_FeedbackDuration_m2A00099181C4D8DBE5082C471E0BEF90EBC51CB2 (void);
+// 0x00000036 System.Void MoreMountains.Feedbacks.MMFeedbackTMPSoftness::CustomInitialization(UnityEngine.GameObject)
+extern void MMFeedbackTMPSoftness_CustomInitialization_mBA8D69E776E9F1F6272570241EB1F0DA3F744C98 (void);
+// 0x00000037 System.Void MoreMountains.Feedbacks.MMFeedbackTMPSoftness::CustomPlayFeedback(UnityEngine.Vector3,System.Single)
+extern void MMFeedbackTMPSoftness_CustomPlayFeedback_m0682572F4EFAFAC2B580FD448EC7BC9C3136A078 (void);
+// 0x00000038 System.Collections.IEnumerator MoreMountains.Feedbacks.MMFeedbackTMPSoftness::ApplyValueOverTime()
+extern void MMFeedbackTMPSoftness_ApplyValueOverTime_mEA8007BD2FC3C6DE49F43B5E5F3D48046103C9AD (void);
+// 0x00000039 System.Void MoreMountains.Feedbacks.MMFeedbackTMPSoftness::SetValue(System.Single)
+extern void MMFeedbackTMPSoftness_SetValue_m29C7792CDED030EC03A74F68E8D3B930225E82C9 (void);
+// 0x0000003A System.Void MoreMountains.Feedbacks.MMFeedbackTMPSoftness::.ctor()
+extern void MMFeedbackTMPSoftness__ctor_m74D8C6DD7AE1A927FBD66AA4DECA9DA69657AC71 (void);
+// 0x0000003B System.Void MoreMountains.Feedbacks.MMFeedbackTMPSoftness/<ApplyValueOverTime>d__16::.ctor(System.Int32)
+extern void U3CApplyValueOverTimeU3Ed__16__ctor_mBB4CB811561B5DB23508402A74CEB3EB98ADD5EA (void);
+// 0x0000003C System.Void MoreMountains.Feedbacks.MMFeedbackTMPSoftness/<ApplyValueOverTime>d__16::System.IDisposable.Dispose()
+extern void U3CApplyValueOverTimeU3Ed__16_System_IDisposable_Dispose_m3B6031E4DD843A3F455B99138AA7333FA69EFA5E (void);
+// 0x0000003D System.Boolean MoreMountains.Feedbacks.MMFeedbackTMPSoftness/<ApplyValueOverTime>d__16::MoveNext()
+extern void U3CApplyValueOverTimeU3Ed__16_MoveNext_m55288081825EE0C93AC71FB273416D39D8C89D4D (void);
+// 0x0000003E System.Object MoreMountains.Feedbacks.MMFeedbackTMPSoftness/<ApplyValueOverTime>d__16::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CApplyValueOverTimeU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m9C6EAC84A7AF38AA4C34D1AD5EC01613A54C9B29 (void);
+// 0x0000003F System.Void MoreMountains.Feedbacks.MMFeedbackTMPSoftness/<ApplyValueOverTime>d__16::System.Collections.IEnumerator.Reset()
+extern void U3CApplyValueOverTimeU3Ed__16_System_Collections_IEnumerator_Reset_mAAA22BA3885A9890C8B3CC6B21BCB89CD6E12DBB (void);
+// 0x00000040 System.Object MoreMountains.Feedbacks.MMFeedbackTMPSoftness/<ApplyValueOverTime>d__16::System.Collections.IEnumerator.get_Current()
+extern void U3CApplyValueOverTimeU3Ed__16_System_Collections_IEnumerator_get_Current_m0A1348E46072426C46A43AF71A2CF4B93281F07B (void);
+// 0x00000041 System.Void MoreMountains.Feedbacks.MMFeedbackTMPText::CustomPlayFeedback(UnityEngine.Vector3,System.Single)
+extern void MMFeedbackTMPText_CustomPlayFeedback_m012DEB2C8FDCBA3609283037A52DCB61A330C2D4 (void);
+// 0x00000042 System.Void MoreMountains.Feedbacks.MMFeedbackTMPText::.ctor()
+extern void MMFeedbackTMPText__ctor_mC4B0519A6047566D80E512D45C5194AC828A5DB8 (void);
+// 0x00000043 System.Single MoreMountains.Feedbacks.MMFeedbackTMPTextReveal::get_FeedbackDuration()
+extern void MMFeedbackTMPTextReveal_get_FeedbackDuration_mC619428779B7A7F606A1DF3F3C559B5D0587F613 (void);
+// 0x00000044 System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal::set_FeedbackDuration(System.Single)
+extern void MMFeedbackTMPTextReveal_set_FeedbackDuration_m22EC7A61A3E6FE4024E9D3A83D3A9744DECB5283 (void);
+// 0x00000045 System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal::CustomPlayFeedback(UnityEngine.Vector3,System.Single)
+extern void MMFeedbackTMPTextReveal_CustomPlayFeedback_mDDFD2A483246EC93AE47E6E9B27DD7687D616E5F (void);
+// 0x00000046 System.Collections.IEnumerator MoreMountains.Feedbacks.MMFeedbackTMPTextReveal::RevealCharacters()
+extern void MMFeedbackTMPTextReveal_RevealCharacters_m1948DCB3E0A2EB43BAAF90C6F55254B820EDDBF2 (void);
+// 0x00000047 System.Collections.IEnumerator MoreMountains.Feedbacks.MMFeedbackTMPTextReveal::RevealLines()
+extern void MMFeedbackTMPTextReveal_RevealLines_m6D87E494D1DE07A5A44FE92A13B2722A8825231E (void);
+// 0x00000048 System.Collections.IEnumerator MoreMountains.Feedbacks.MMFeedbackTMPTextReveal::RevealWords()
+extern void MMFeedbackTMPTextReveal_RevealWords_m287C46DA343859656DA529F109CFA2F6AF54C0C0 (void);
+// 0x00000049 System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal::CustomStopFeedback(UnityEngine.Vector3,System.Single)
+extern void MMFeedbackTMPTextReveal_CustomStopFeedback_mD29D320BEA38BA31832CAACF939F4D7B7F898E58 (void);
+// 0x0000004A System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal::.ctor()
+extern void MMFeedbackTMPTextReveal__ctor_m69361989A10263EDB3FD3D8B3E82C7F7D7A8BB4E (void);
+// 0x0000004B System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealCharacters>d__15::.ctor(System.Int32)
+extern void U3CRevealCharactersU3Ed__15__ctor_m1637BCCB7806FEBD17FB2BFC368B31151D8E6B0D (void);
+// 0x0000004C System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealCharacters>d__15::System.IDisposable.Dispose()
+extern void U3CRevealCharactersU3Ed__15_System_IDisposable_Dispose_m4A043401CC3BD6DF0EAFD0E5405694A494C00919 (void);
+// 0x0000004D System.Boolean MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealCharacters>d__15::MoveNext()
+extern void U3CRevealCharactersU3Ed__15_MoveNext_m0D4617ADC4AF5FF2BE2209BC1B345FD1A184FEF4 (void);
+// 0x0000004E System.Object MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealCharacters>d__15::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CRevealCharactersU3Ed__15_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m1D7E3EDC402ABA9E038C41E82A407FFFDFBE0533 (void);
+// 0x0000004F System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealCharacters>d__15::System.Collections.IEnumerator.Reset()
+extern void U3CRevealCharactersU3Ed__15_System_Collections_IEnumerator_Reset_mBF16D85AFD4DF893963DF6EE99E57ACC404E370D (void);
+// 0x00000050 System.Object MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealCharacters>d__15::System.Collections.IEnumerator.get_Current()
+extern void U3CRevealCharactersU3Ed__15_System_Collections_IEnumerator_get_Current_m6F55485F168049B2FE3935BB71A517C6F0520F99 (void);
+// 0x00000051 System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealLines>d__16::.ctor(System.Int32)
+extern void U3CRevealLinesU3Ed__16__ctor_mE9DFC665D38DD1B686752AA20CBA6515B03E3E4A (void);
+// 0x00000052 System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealLines>d__16::System.IDisposable.Dispose()
+extern void U3CRevealLinesU3Ed__16_System_IDisposable_Dispose_mF128493F30C807489AA59713C423E7EB1015E96D (void);
+// 0x00000053 System.Boolean MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealLines>d__16::MoveNext()
+extern void U3CRevealLinesU3Ed__16_MoveNext_mECDFE40E80D054EC8B2878C7C524769AD7C4773B (void);
+// 0x00000054 System.Object MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealLines>d__16::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CRevealLinesU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mEA0DC5E0B5B5403A28C1AE3A59F017AC1B17973A (void);
+// 0x00000055 System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealLines>d__16::System.Collections.IEnumerator.Reset()
+extern void U3CRevealLinesU3Ed__16_System_Collections_IEnumerator_Reset_m1EC175CEDB2A409D798E99FABAC2C39B6E0900C3 (void);
+// 0x00000056 System.Object MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealLines>d__16::System.Collections.IEnumerator.get_Current()
+extern void U3CRevealLinesU3Ed__16_System_Collections_IEnumerator_get_Current_m7D00831CDDF4F184817BD98FBE28C786043FA4E6 (void);
+// 0x00000057 System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealWords>d__17::.ctor(System.Int32)
+extern void U3CRevealWordsU3Ed__17__ctor_m87D68731419F398E9784DA2D6AE3FE5C8A9D0464 (void);
+// 0x00000058 System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealWords>d__17::System.IDisposable.Dispose()
+extern void U3CRevealWordsU3Ed__17_System_IDisposable_Dispose_mF0584A2A2798A874762000A9447AC050F4EF4ADC (void);
+// 0x00000059 System.Boolean MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealWords>d__17::MoveNext()
+extern void U3CRevealWordsU3Ed__17_MoveNext_m690A61C2BCA59C20ECF9698EFAB8A9DECE719ED3 (void);
+// 0x0000005A System.Object MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealWords>d__17::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CRevealWordsU3Ed__17_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mB7FB56F811322DAC750B09A1987844F420C8FD80 (void);
+// 0x0000005B System.Void MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealWords>d__17::System.Collections.IEnumerator.Reset()
+extern void U3CRevealWordsU3Ed__17_System_Collections_IEnumerator_Reset_mD532FCAE6F5507E5FCFFD296A3A35DF92B019F15 (void);
+// 0x0000005C System.Object MoreMountains.Feedbacks.MMFeedbackTMPTextReveal/<RevealWords>d__17::System.Collections.IEnumerator.get_Current()
+extern void U3CRevealWordsU3Ed__17_System_Collections_IEnumerator_get_Current_m38DC8AE5BE6B8C4F20A7011FCB159AEA7B219A3E (void);
+// 0x0000005D System.Void MoreMountains.Feedbacks.MMFeedbackTMPWordSpacing::FillTargets()
+extern void MMFeedbackTMPWordSpacing_FillTargets_m1214583AFD828D85B5BF85951FA601E0D310D03E (void);
+// 0x0000005E System.Void MoreMountains.Feedbacks.MMFeedbackTMPWordSpacing::.ctor()
+extern void MMFeedbackTMPWordSpacing__ctor_m4B5D947111B5A3B697E38CC040120ADD94158AB8 (void);
+static Il2CppMethodPointer s_methodPointers[94] = 
+{
+	MMFeedbackTMPCharacterSpacing_FillTargets_mE072DC4E4EA2DF3B950B747B3E305EC9B6379F4E,
+	MMFeedbackTMPCharacterSpacing__ctor_mA52D68F9A4C3F6D020A5DF8AAA9519875011948C,
+	MMFeedbackTMPColor_get_FeedbackDuration_m0613963A9C1084DFA977736120F1E51191D1F7E7,
+	MMFeedbackTMPColor_set_FeedbackDuration_m75D3147C5D569F11943BBE08D523136ADF15E134,
+	MMFeedbackTMPColor_CustomInitialization_m360ABEB16A9E316D168D0890E656F33EC52D248C,
+	MMFeedbackTMPColor_CustomPlayFeedback_m1AA2979C046BDA4F85CAAA3C35EB13A556BD6722,
+	MMFeedbackTMPColor_ChangeColor_m27B6803D1D855B1E498B27D8E75B7E76B6450E67,
+	MMFeedbackTMPColor_CustomStopFeedback_m1B21589F4A9BB37FB3BB0B1173008E67D40968F4,
+	MMFeedbackTMPColor_SetColor_m0C9C426BDA730F8844E55DEEA69104F6B51D36C0,
+	MMFeedbackTMPColor__ctor_mEC34D0430A3E3C5EBBEF63C6275C039D1B229042,
+	U3CChangeColorU3Ed__16__ctor_m9AB2D11DEA4E391CCE2F9162A37ABBB1E8115403,
+	U3CChangeColorU3Ed__16_System_IDisposable_Dispose_mC94F585AC82FDC822E97485A1A582EADFD564FCA,
+	U3CChangeColorU3Ed__16_MoveNext_mC97757225D8EF877016D0D88BDC594FE1217151B,
+	U3CChangeColorU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m5D2F8E25BC677BBD5FD6C85C6F9929B97E7DB6ED,
+	U3CChangeColorU3Ed__16_System_Collections_IEnumerator_Reset_m5B438B77819B725858606AAA3BA0EBC855B0735B,
+	U3CChangeColorU3Ed__16_System_Collections_IEnumerator_get_Current_m5DE3166B7FD4B3257271B4B16373CA8DCF4E6CA2,
+	MMFeedbackTMPDilate_get_FeedbackDuration_mC1785858E44FB65E6FF919E49761FD1CF035EC8B,
+	MMFeedbackTMPDilate_set_FeedbackDuration_m05F4F69C54D09AD3EE1959A1FC68F57BE3F3D6D1,
+	MMFeedbackTMPDilate_CustomInitialization_m314AC78E16E4A6046456F92571FE744A0447B911,
+	MMFeedbackTMPDilate_CustomPlayFeedback_m3F8B71F41D834340DC3BC1298247D4838A53BCF5,
+	MMFeedbackTMPDilate_ApplyValueOverTime_m0D80A61F348A01D79C360D86E4D745EBE5BAA449,
+	MMFeedbackTMPDilate_SetValue_m39497D5B42EA6593D9099DBF4BB833C99C19226B,
+	MMFeedbackTMPDilate__ctor_m059D9300D7B2FE34B007C97C0EFCDBA9F957EC0E,
+	U3CApplyValueOverTimeU3Ed__16__ctor_m503197A0132D840BD60D67AF74DCF55654D53134,
+	U3CApplyValueOverTimeU3Ed__16_System_IDisposable_Dispose_m2B5A17EABA54D236732A9A033910AC38BBD3DA5E,
+	U3CApplyValueOverTimeU3Ed__16_MoveNext_m96EE41E66270AF4ED0DDD20269DBED1ECBABD584,
+	U3CApplyValueOverTimeU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m55376C12972C3889A6FDB94DFD6AC83C215E1E4D,
+	U3CApplyValueOverTimeU3Ed__16_System_Collections_IEnumerator_Reset_mC222C4BE2055C9468C6C9522287F74A4B6CB712F,
+	U3CApplyValueOverTimeU3Ed__16_System_Collections_IEnumerator_get_Current_m0A6A8785C63432DD777DFBCC43D4F8F7205D0741,
+	MMFeedbackTMPFontSize_FillTargets_m59DA9642A0321BDFE669496738CC4AA77BF91D52,
+	MMFeedbackTMPFontSize__ctor_m8FC9BF1A70F2061E020F682EFA9C0B5A719E815B,
+	MMFeedbackTMPLineSpacing_FillTargets_m8ED037A6F85558B2050997712686D62001BD2A86,
+	MMFeedbackTMPLineSpacing__ctor_m13F8015E5DC976F94763487B5016D0E9FF5DCE06,
+	MMFeedbackTMPOutlineColor_get_FeedbackDuration_m8049F663B51B872C86E5DAFAC7D060C5C9C9E2BD,
+	MMFeedbackTMPOutlineColor_set_FeedbackDuration_m35A13C8704F576ED38145C1A680E60A02D713F52,
+	MMFeedbackTMPOutlineColor_CustomInitialization_mD2C240229071AE8339E1F446E57E95BA8861BB40,
+	MMFeedbackTMPOutlineColor_CustomPlayFeedback_mA7423D0603C99AF154126F1ECE47D388F94725E7,
+	MMFeedbackTMPOutlineColor_ChangeColor_m74AAEB54503CE2A04501AAE8C55A58E4657133FD,
+	MMFeedbackTMPOutlineColor_SetColor_m87C15DE89B9D2274C9F1DB7DF45F52A010D65E3F,
+	MMFeedbackTMPOutlineColor_CustomStopFeedback_m84CD76557FDD530B77299FAAFF77A6FFE21E0FB6,
+	MMFeedbackTMPOutlineColor__ctor_m5D5EC21DC2A9772B5B083C99B79D49A527FC03FC,
+	U3CChangeColorU3Ed__16__ctor_m70A5F02243B037869D168470481F369EB8B2E9AB,
+	U3CChangeColorU3Ed__16_System_IDisposable_Dispose_mC462E0E24A18B683CFD18C65780D638C14899F50,
+	U3CChangeColorU3Ed__16_MoveNext_mCDFAD20588302F6A46A3CC993E38EABD5C6F1A92,
+	U3CChangeColorU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m62B551B732FADF4CE4298F38E13E2EAD41D9283D,
+	U3CChangeColorU3Ed__16_System_Collections_IEnumerator_Reset_m56DB6AE427085DD0C3D8C9369542E99DCCA3C1FD,
+	U3CChangeColorU3Ed__16_System_Collections_IEnumerator_get_Current_mD0A09BCDF71AB33A4B17ED00E1F267CF3D45FB78,
+	MMFeedbackTMPOutlineWidth_FillTargets_m8A0FEBE444CD106F769C06B030E3208FA52942DF,
+	MMFeedbackTMPOutlineWidth__ctor_m5A0991B38522612D822F416E32CF07782CFEA3CA,
+	MMFeedbackTMPParagraphSpacing_FillTargets_m67EF24A073D4BE5DA23685264B0ED2A6DF91A137,
+	MMFeedbackTMPParagraphSpacing__ctor_mBEF9CC8AE773E1680CFEE02DCA2765220C709CEF,
+	MMFeedbackTMPSoftness_get_FeedbackDuration_m4D8E4E634BC5696A05AE47882C77AE27F88F258F,
+	MMFeedbackTMPSoftness_set_FeedbackDuration_m2A00099181C4D8DBE5082C471E0BEF90EBC51CB2,
+	MMFeedbackTMPSoftness_CustomInitialization_mBA8D69E776E9F1F6272570241EB1F0DA3F744C98,
+	MMFeedbackTMPSoftness_CustomPlayFeedback_m0682572F4EFAFAC2B580FD448EC7BC9C3136A078,
+	MMFeedbackTMPSoftness_ApplyValueOverTime_mEA8007BD2FC3C6DE49F43B5E5F3D48046103C9AD,
+	MMFeedbackTMPSoftness_SetValue_m29C7792CDED030EC03A74F68E8D3B930225E82C9,
+	MMFeedbackTMPSoftness__ctor_m74D8C6DD7AE1A927FBD66AA4DECA9DA69657AC71,
+	U3CApplyValueOverTimeU3Ed__16__ctor_mBB4CB811561B5DB23508402A74CEB3EB98ADD5EA,
+	U3CApplyValueOverTimeU3Ed__16_System_IDisposable_Dispose_m3B6031E4DD843A3F455B99138AA7333FA69EFA5E,
+	U3CApplyValueOverTimeU3Ed__16_MoveNext_m55288081825EE0C93AC71FB273416D39D8C89D4D,
+	U3CApplyValueOverTimeU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m9C6EAC84A7AF38AA4C34D1AD5EC01613A54C9B29,
+	U3CApplyValueOverTimeU3Ed__16_System_Collections_IEnumerator_Reset_mAAA22BA3885A9890C8B3CC6B21BCB89CD6E12DBB,
+	U3CApplyValueOverTimeU3Ed__16_System_Collections_IEnumerator_get_Current_m0A1348E46072426C46A43AF71A2CF4B93281F07B,
+	MMFeedbackTMPText_CustomPlayFeedback_m012DEB2C8FDCBA3609283037A52DCB61A330C2D4,
+	MMFeedbackTMPText__ctor_mC4B0519A6047566D80E512D45C5194AC828A5DB8,
+	MMFeedbackTMPTextReveal_get_FeedbackDuration_mC619428779B7A7F606A1DF3F3C559B5D0587F613,
+	MMFeedbackTMPTextReveal_set_FeedbackDuration_m22EC7A61A3E6FE4024E9D3A83D3A9744DECB5283,
+	MMFeedbackTMPTextReveal_CustomPlayFeedback_mDDFD2A483246EC93AE47E6E9B27DD7687D616E5F,
+	MMFeedbackTMPTextReveal_RevealCharacters_m1948DCB3E0A2EB43BAAF90C6F55254B820EDDBF2,
+	MMFeedbackTMPTextReveal_RevealLines_m6D87E494D1DE07A5A44FE92A13B2722A8825231E,
+	MMFeedbackTMPTextReveal_RevealWords_m287C46DA343859656DA529F109CFA2F6AF54C0C0,
+	MMFeedbackTMPTextReveal_CustomStopFeedback_mD29D320BEA38BA31832CAACF939F4D7B7F898E58,
+	MMFeedbackTMPTextReveal__ctor_m69361989A10263EDB3FD3D8B3E82C7F7D7A8BB4E,
+	U3CRevealCharactersU3Ed__15__ctor_m1637BCCB7806FEBD17FB2BFC368B31151D8E6B0D,
+	U3CRevealCharactersU3Ed__15_System_IDisposable_Dispose_m4A043401CC3BD6DF0EAFD0E5405694A494C00919,
+	U3CRevealCharactersU3Ed__15_MoveNext_m0D4617ADC4AF5FF2BE2209BC1B345FD1A184FEF4,
+	U3CRevealCharactersU3Ed__15_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m1D7E3EDC402ABA9E038C41E82A407FFFDFBE0533,
+	U3CRevealCharactersU3Ed__15_System_Collections_IEnumerator_Reset_mBF16D85AFD4DF893963DF6EE99E57ACC404E370D,
+	U3CRevealCharactersU3Ed__15_System_Collections_IEnumerator_get_Current_m6F55485F168049B2FE3935BB71A517C6F0520F99,
+	U3CRevealLinesU3Ed__16__ctor_mE9DFC665D38DD1B686752AA20CBA6515B03E3E4A,
+	U3CRevealLinesU3Ed__16_System_IDisposable_Dispose_mF128493F30C807489AA59713C423E7EB1015E96D,
+	U3CRevealLinesU3Ed__16_MoveNext_mECDFE40E80D054EC8B2878C7C524769AD7C4773B,
+	U3CRevealLinesU3Ed__16_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mEA0DC5E0B5B5403A28C1AE3A59F017AC1B17973A,
+	U3CRevealLinesU3Ed__16_System_Collections_IEnumerator_Reset_m1EC175CEDB2A409D798E99FABAC2C39B6E0900C3,
+	U3CRevealLinesU3Ed__16_System_Collections_IEnumerator_get_Current_m7D00831CDDF4F184817BD98FBE28C786043FA4E6,
+	U3CRevealWordsU3Ed__17__ctor_m87D68731419F398E9784DA2D6AE3FE5C8A9D0464,
+	U3CRevealWordsU3Ed__17_System_IDisposable_Dispose_mF0584A2A2798A874762000A9447AC050F4EF4ADC,
+	U3CRevealWordsU3Ed__17_MoveNext_m690A61C2BCA59C20ECF9698EFAB8A9DECE719ED3,
+	U3CRevealWordsU3Ed__17_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mB7FB56F811322DAC750B09A1987844F420C8FD80,
+	U3CRevealWordsU3Ed__17_System_Collections_IEnumerator_Reset_mD532FCAE6F5507E5FCFFD296A3A35DF92B019F15,
+	U3CRevealWordsU3Ed__17_System_Collections_IEnumerator_get_Current_m38DC8AE5BE6B8C4F20A7011FCB159AEA7B219A3E,
+	MMFeedbackTMPWordSpacing_FillTargets_m1214583AFD828D85B5BF85951FA601E0D310D03E,
+	MMFeedbackTMPWordSpacing__ctor_m4B5D947111B5A3B697E38CC040120ADD94158AB8,
+};
+static const int32_t s_InvokerIndices[94] = 
+{
+	7341,
+	7341,
+	7261,
+	5956,
+	5896,
+	3392,
+	7194,
+	3392,
+	5956,
+	7341,
+	5847,
+	7341,
+	7095,
+	7194,
+	7341,
+	7194,
+	7261,
+	5956,
+	5896,
+	3392,
+	7194,
+	5956,
+	7341,
+	5847,
+	7341,
+	7095,
+	7194,
+	7341,
+	7194,
+	7341,
+	7341,
+	7341,
+	7341,
+	7261,
+	5956,
+	5896,
+	3392,
+	7194,
+	5956,
+	3392,
+	7341,
+	5847,
+	7341,
+	7095,
+	7194,
+	7341,
+	7194,
+	7341,
+	7341,
+	7341,
+	7341,
+	7261,
+	5956,
+	5896,
+	3392,
+	7194,
+	5956,
+	7341,
+	5847,
+	7341,
+	7095,
+	7194,
+	7341,
+	7194,
+	3392,
+	7341,
+	7261,
+	5956,
+	3392,
+	7194,
+	7194,
+	7194,
+	3392,
+	7341,
+	5847,
+	7341,
+	7095,
+	7194,
+	7341,
+	7194,
+	5847,
+	7341,
+	7095,
+	7194,
+	7341,
+	7194,
+	5847,
+	7341,
+	7095,
+	7194,
+	7341,
+	7194,
+	7341,
+	7341,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_MoreMountains_Feedbacks_TextMeshPro_CodeGenModule;
+const Il2CppCodeGenModule g_MoreMountains_Feedbacks_TextMeshPro_CodeGenModule = 
+{
+	"MoreMountains.Feedbacks.TextMeshPro.dll",
+	94,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL, // module initializer,
+	NULL,
+	NULL,
+	NULL,
+};

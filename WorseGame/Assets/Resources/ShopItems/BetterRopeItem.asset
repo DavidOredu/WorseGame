@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BetterRopeItem
   m_EditorClassIdentifier: 
   itemName: BetterRope
-  price: 33390
+  price: 0
   level: 0
   maxLevel: 10
   isSoldOut: 0

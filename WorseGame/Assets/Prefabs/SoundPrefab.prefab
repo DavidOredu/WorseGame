@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1082753562240054267}
   - component: {fileID: 1082753562240054266}
+  - component: {fileID: 8859198963959576105}
   m_Layer: 0
   m_Name: SoundPrefab
   m_TagString: Untagged
@@ -118,6 +119,31 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!169 &8859198963959576105
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082753562240054213}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.45216006
       inSlope: 0
       outSlope: 0
       tangentMode: 0

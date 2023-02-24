@@ -60,8 +60,9 @@ public class LevelSystem
     {
         if (!IsMaxLevel())
         {
+            levelAttribute.addedExperience = amount;
             levelAttribute.experience += amount;
-            while(levelAttribute.experience >= levelAttribute.experienceToNextLevel)
+            while(levelAttribute.experience >= levelAttribute.experienceToNextLevel && !IsMaxLevel())
             {
                 LevelUp();
             }
@@ -120,5 +121,14 @@ public class LevelSystem
         var experienceToNextLevel = nextValue - currentValue;
 
         return (int)experienceToNextLevel;
+    }
+    public float GetExperienceToNextLevelFloat(int level)
+    {
+        var currentValue = levelData.experienceToNextLevel.Evaluate(level);
+        var nextValue = levelData.experienceToNextLevel.Evaluate(level + 1);
+
+        var experienceToNextLevel = nextValue - currentValue;
+
+        return experienceToNextLevel;
     }
 }

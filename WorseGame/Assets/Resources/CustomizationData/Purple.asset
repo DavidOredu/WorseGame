@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Purple
   m_EditorClassIdentifier: 
   customizationType: 0
-  color: {r: 1, g: 0, b: 1, a: 1}
+  color: {r: 1, g: 0.4669811, b: 1, a: 1}
   level: 0
-  price: 0
+  price: 500000000
   isUnlocked: 0
   isPicked: 0
   priceAtLevel:
@@ -24,17 +24,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 500000000
-      outSlope: 500000000
+      inSlope: 80000000
+      outSlope: 80000000
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 500000000
-      inSlope: 500000000
-      outSlope: 500000000
+      value: 80000000
+      inSlope: 80000000
+      outSlope: 80000000
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

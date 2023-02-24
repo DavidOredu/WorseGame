@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GreenRope
   m_EditorClassIdentifier: 
   customizationType: 1
-  color: {r: 0, g: 1, b: 0, a: 1}
+  color: {r: 0.5518868, g: 1, b: 0.5518868, a: 1}
   level: 0
-  price: 0
+  price: 10000000
   isUnlocked: 0
   isPicked: 0
   priceAtLevel:

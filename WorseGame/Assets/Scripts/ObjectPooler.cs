@@ -148,10 +148,6 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
         return objectToSpawn;
     }
-    private void OnDestroy()
-    {
-        
-    }
     public enum PoolTag
     {
         Normal,
@@ -162,5 +158,8 @@ public class ObjectPooler : Singleton<ObjectPooler>
         MoneyDeluxe,
         Shooter,
         Kamikaze,
+        Health,
+        Shield,
+        ViralHit,
     }
 }

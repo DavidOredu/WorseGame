@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KamikazeEnemy : Box
 {
@@ -15,6 +16,20 @@ public class KamikazeEnemy : Box
     public float acceleration;
     public float deceleration;
     public float speed;
+
+    [SerializeField]
+    private Canvas stateImageCanvas;
+    [SerializeField]
+    private Image stateImage;
+    [SerializeField]
+    private Sprite idleStateSprite;
+    [SerializeField]
+    private Sprite alertStateSprite;
+
+    [SerializeField]
+    private float alertStateSpriteSize = 5f;
+    [SerializeField]
+    private float idleStateSpriteSize = 2f;
     
     public override void Start()
     {
@@ -25,6 +40,8 @@ public class KamikazeEnemy : Box
 
         trail1.enabled = false;
         trail2.enabled = false;
+
+        stateImageCanvas.worldCamera = Camera.main;
     }
 
     private void FixedUpdate()
@@ -38,6 +55,7 @@ public class KamikazeEnemy : Box
             case EnemyState.Alert:
                 FindPlayer();
                 RunAlertTimer();
+                UpdateAlertSlider();
                 break;
             case EnemyState.Attack:
                 ChasePlayer();
@@ -55,16 +73,24 @@ public class KamikazeEnemy : Box
     }
     void RunAlertTimer()
     {
-        if (alertTimer.isTimeUp)
+        if (alertTimer.IsTimeUp)
         {
             trail1.enabled = true;
             trail2.enabled = true;
+            stateImage.rectTransform.sizeDelta = new Vector2(alertStateSpriteSize, alertStateSpriteSize);
+            stateImage.sprite = alertStateSprite;
+            alertTimer.ResetTimer(alertTime);
+            stateImage.fillAmount = 1f;
             currentKamikazeState = EnemyState.Attack;
         }
         else
         {
             alertTimer.UpdateTimer();
         }
+    }
+    void UpdateAlertSlider()
+    {
+        stateImage.fillAmount = 1 - alertTimer.CurrentTimeNormalized();
     }
     private void FindPlayer()
     {
@@ -78,8 +104,10 @@ public class KamikazeEnemy : Box
         else
         {
             target = null;
+            stateImage.rectTransform.sizeDelta = new Vector2(idleStateSpriteSize, idleStateSpriteSize);
+            stateImage.sprite = idleStateSprite;
             currentKamikazeState = EnemyState.Idle;
-            alertTimer.ResetTimer();
+            alertTimer.ResetTimer(alertTime);
         }
     }
     public void ChasePlayer()
@@ -93,7 +121,6 @@ public class KamikazeEnemy : Box
         Vector2 vel = transform.right * (acceleration);
         rb.AddForce(vel);
 
-        float dir = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.right));
         float thrustForce = Vector2.Dot(rb.velocity, rb.GetRelativeVector(Vector2.down)) * 2f;
         Vector2 relForce = Vector2.up * thrustForce;
         rb.AddForce(rb.GetRelativeVector(relForce));
@@ -110,8 +137,10 @@ public class KamikazeEnemy : Box
         if (!hit)
         {
             target = null;
+            stateImage.rectTransform.sizeDelta = new Vector2(idleStateSpriteSize, idleStateSpriteSize);
+            stateImage.sprite = idleStateSprite;
             currentKamikazeState = EnemyState.Idle;
-            alertTimer.ResetTimer();
+            alertTimer.ResetTimer(alertTime);
         }
     }
     private void OnDrawGizmos()

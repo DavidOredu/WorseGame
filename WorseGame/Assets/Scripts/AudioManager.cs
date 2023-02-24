@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class AudioManager : Singleton<AudioManager>, IPointerEnterHandler, IPointerClickHandler
 {
     public GameObject soundPrefab;
-    private List<GameObject> soundObjects = new List<GameObject>();
     public Sound[] sounds;
     public SettingsData gameSettings;
 
@@ -20,7 +19,7 @@ public class AudioManager : Singleton<AudioManager>, IPointerEnterHandler, IPoin
     public List<MMFeedbacks> feedbackIconSounds;
     public List<MMFeedbacks> feedbackUISounds;
 	
-	private List<Sound> musicList;
+	private readonly List<Sound> musicList = new List<Sound>();
     // Start is called before the first frame update
     public override void Awake()
     {
@@ -48,8 +47,11 @@ public class AudioManager : Singleton<AudioManager>, IPointerEnterHandler, IPoin
             sound.source.loop = sound.loop;
             sound.source.volume = sound.volume;
             sound.source.pitch = sound.pitch;
-            if(sound.soundType == SoundType.Music)
+            if (sound.soundType == SoundType.Music)
+            {
                 obj.AddComponent<MMAudioSourcePitchShaker>().AlwaysResetTargetValuesAfterShake = true;
+                obj.AddComponent<MMAudioFilterLowPassShaker>();
+            }
         }
 		
         foreach (var sound in sounds)

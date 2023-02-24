@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 public class UIManager : SingletonDontDestroy<UIManager>
 {
     #region NESTED CLASSES
@@ -20,6 +21,7 @@ public class UIManager : SingletonDontDestroy<UIManager>
             Shop,
             Customization,
             Settings,
+            Credits,
         }
         // Current screen type
         public Screen tag;
@@ -44,6 +46,8 @@ public class UIManager : SingletonDontDestroy<UIManager>
             GameOver,
             ResetGame,
             ExitGame,
+            PauseGame,
+            Settings,
         }
 
         // The gameobject associated with this screen
@@ -82,6 +86,9 @@ public class UIManager : SingletonDontDestroy<UIManager>
     public List<UiTab> tabs = new List<UiTab>();
 
     public ParticleSystemRenderer background;
+
+    [Space]
+    public Button pauseButton;
     // Is the game paused? Is it not?
     public static bool GameIsPaused = false;
 
@@ -160,10 +167,20 @@ public class UIManager : SingletonDontDestroy<UIManager>
         SetStartingUI();
         SubscribeTabButtons();
         SetStartingTab();
-
+        InitPopupFeedbacks();
     }
-    
-
+    public void SetPauseButton(bool active)
+    {
+        pauseButton.gameObject.SetActive(active);
+    }
+    private void InitPopupFeedbacks()
+    {
+        foreach (var popup in popUps)
+        {
+            popup.openFeedback.Initialization();
+            popup.closeFeedback.Initialization();
+        }
+    }
     private void SubscribeTabButtons()
     {
         foreach (var tab in tabs)
@@ -419,6 +436,14 @@ public class UIManager : SingletonDontDestroy<UIManager>
             }
         }
         return null;
+    }
+    /// <summary>
+    /// Opens a hyperlink by a url.
+    /// </summary>
+    /// <param name="url">The url to the link.</param>
+    public void OpenLink(string url)
+    {
+        Application.OpenURL(url);
     }
     #endregion
 }

@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 58.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,9 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolTags: 0000000001000000
-  spawnArea: {x: 400, y: 400, z: 0}
+  spawnArea: {x: 350, y: 350, z: 0}
   areaOffset: {x: 0, y: 46.82, z: 0}
   boxesSpawned: []
+  boxesSpawnedComponents: []
+  aIControllers: []
   playerMaxHeight: 2000
   boxMinDist: 25
   boxMaxDist: 500

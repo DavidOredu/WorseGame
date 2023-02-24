@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 130391419578796480}
   - component: {fileID: -8478985066262601734}
   - component: {fileID: 6024550385289891552}
+  - component: {fileID: 9027674059336846682}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Box
@@ -127,11 +128,18 @@ MonoBehaviour:
   boxType: 1
   boxData: {fileID: 11400000, guid: 9f0ef42a0e41b614b9634917aa655411, type: 2}
   canDamage: 1
+  isEnemyType: 1
   destructionEffect: {fileID: 8928233112347745738, guid: 72e90c93538a8fc47be1a560c7f23dfd,
     type: 3}
   destructionFeedbacks: {fileID: -8478985066262601734}
   valueText: {fileID: 6024550385289891552}
   currencyText: {fileID: 831642848473611987}
+  playerSearchRadius: 0
+  playerMaxRadius: 0
+  whatToAttack:
+    serializedVersion: 2
+    m_Bits: 0
+  probabilityData: {fileID: 11400000, guid: 228eb540e0a90924e8d04d773acb002b, type: 2}
 --- !u!114 &-8478985066262601734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +259,20 @@ MonoBehaviour:
   PositionMode: 1
   TargetTransform: {fileID: 0}
   Direction: {x: 0, y: 1, z: 0}
+--- !u!114 &9027674059336846682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130391419578796484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b663c61be3ede334aa0dfe7f9000015a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyData: {fileID: 11400000, guid: b0498d2ef01680046b143931d67c86a2, type: 2}
+  enemyType: 0
 --- !u!1 &9107447105743820193
 GameObject:
   m_ObjectHideFlags: 0
